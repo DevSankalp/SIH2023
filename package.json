@@ -1,6 +1,7 @@
 {
   "name": "sih2023",
   "version": "0.1.0",
+  "homepage": "https://DevSankalp.github.io/SIH2023",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -19,6 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.1.0",
     "tailwindcss": "^3.3.5"
   }
 }
