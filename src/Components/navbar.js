@@ -43,7 +43,7 @@ const Nav = ({ navbarData }) => {
   );
 
   return (
-    <Navbar className="top-0 fixed z-10 h-max max-w-full py-2 px-4 lg:px-8 lg:py-4 text-black glassmorph bg-[rgba(255,255,255,.9)]">
+    <Navbar className="top-0 fixed z-10 h-max max-w-full py-2 px-4 lg:px-8 lg:py-4 text-black glassmorph bg-[rgba(255,255,255,.9)] rounded-none">
       <div className="flex items-center justify-between pl-4 text-blue-gray-900">
         <div className="flex items-center gap-4">
           <Typography
@@ -58,8 +58,8 @@ const Nav = ({ navbarData }) => {
           /> */}
             {logoText}
           </Typography>
-          <div className="mr-4 hidden lg:block">{navList}</div>
         </div>
+        <div className="mr-4 hidden lg:block">{navList}</div>
         <div className="flex items-center gap-4 p-2">
           <Link
             to={navbarData.link}
