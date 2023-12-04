@@ -17,8 +17,8 @@ const ParticleSphere = ({ width, height }) => {
 
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const maxX = centerX - 50;
-    const maxY = centerY - 50;
+    const maxX = centerX - 40;
+    const maxY = centerY - 40;
     const range = maxX > maxY ? maxY : maxX;
 
     // Generate particles
