@@ -21,6 +21,7 @@ function Home() {
       ],
       application: ["Templates", "Submitted", "Approved"],
       buttonText: "Get Approved",
+      link: "/Login",
     },
     heroData: {
       title: ["Welcome to FusionX!"],
