@@ -1,23 +1,23 @@
-import React from "react";
+import React from "react"
 import {
   Navbar,
   MobileNav,
   Typography,
   Button,
   IconButton,
-} from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+} from "@material-tailwind/react"
+import { Link } from "react-router-dom"
 
 const Nav = ({ navbarData }) => {
-  const { logoText, navItems, buttonText } = navbarData;
-  const [openNav, setOpenNav] = React.useState(false);
+  const { logoText, navItems, buttonText } = navbarData
+  const [openNav, setOpenNav] = React.useState(false)
 
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+    )
+  }, [])
 
   const navList = (
     <ul className="mb-4 mt-2 p-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -40,7 +40,7 @@ const Nav = ({ navbarData }) => {
         </Typography>
       ))}
     </ul>
-  );
+  )
 
   return (
     <Navbar className="top-0 fixed z-10 h-max max-w-full py-2 px-4 lg:px-8 lg:py-4 text-black glassmorph bg-[rgba(255,255,255,.9)] rounded-none">
@@ -119,7 +119,7 @@ const Nav = ({ navbarData }) => {
         </Button>
       </MobileNav>
     </Navbar>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav
