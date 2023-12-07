@@ -47,7 +47,7 @@ const Nav = ({ navbarData }) => {
         <div className="flex items-center gap-4">
           <Typography
             as="a"
-            href=""
+            href="/"
             className="cursor-pointer flex items-center text-xl lg:text-2xl font-['questrial'] font-black"
           >
             {/* <img
@@ -62,7 +62,7 @@ const Nav = ({ navbarData }) => {
         <div className="flex items-center gap-4 p-2">
           <Link
             to={navbarData.link}
-            className="bg-gray-800 rounded-lg p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0"
+            className={`bg-gray-800 rounded-lg p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class}`}
           >
             Log In
           </Link>

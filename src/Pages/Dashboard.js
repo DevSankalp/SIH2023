@@ -4,20 +4,18 @@ import Main from "../Components/DashBoard/main";
 import logoImg from "../Components/Assets/logo.png";
 
 function Dashboard() {
-  const siteData = {
-    navbarData: {
-      logoText: "FusionX",
-      navItems: [
-        { text: "Home", link: "/" },
-        { text: "Dashboard", link: "/Dashboard", active: true },
-        { text: "Application", link: "/" },
-        { text: "Fee Statement", link: "/" },
-        { text: "Stats", link: "/" },
-        // Add more navigation items as needed
-      ],
-      application: ["Templates", "Submitted", "Approved"],
-      buttonText: "Get Approved",
-    },
+  const navbarData = {
+    logoText: "FusionX",
+    navItems: [
+      { text: "Home", link: "/" },
+      { text: "Dashboard", link: "/Dashboard", active: true },
+      { text: "Application", link: "/" },
+      { text: "Fee Statement", link: "/" },
+      { text: "Stats", link: "/" },
+      // Add more navigation items as needed
+    ],
+    application: ["Templates", "Submitted", "Approved"],
+    buttonText: "Get Approved",
   };
 
   return (

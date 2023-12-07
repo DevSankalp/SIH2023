@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import Navbar from "../Components/navbar";
 
 const formDataConfig = {
@@ -111,6 +111,7 @@ const Login = () => {
     ],
     application: ["Templates", "Submitted", "Approved"],
     buttonText: "Get Approved",
+    class: "hidden",
     link: "/Login",
   };
 
@@ -118,7 +119,7 @@ const Login = () => {
     <div className="bg-[#c9d6ff] flex items-center justify-center h-screen">
       <Navbar navbarData={navbarData} />
       <div
-        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 mt-16 relative overflow-hidden rounded-xl bg-[#512ba8] shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
+        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 mt-16 relative overflow-hidden rounded-xl bg-[#512ba8] md:bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
         id="container"
       >
         {/* Small-Screen */}
@@ -175,7 +176,7 @@ const Login = () => {
 
         {/* Large-Screen */}
         <div
-          className={`hidden md:block h-full transition-all duration-300 w-full md:w-1/2 pb-16 ${
+          className={`hidden md:block h-full transition-all duration-300 w-full md:w-1/2 ${
             clicked ? "translate-x-1/2 z-[1]" : "translate-x-0 z-[1]"
           }`}
         >
