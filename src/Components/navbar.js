@@ -1,23 +1,22 @@
-import React from "react"
+import React from "react";
 import {
   Navbar,
   MobileNav,
   Typography,
   Button,
-  IconButton,
-} from "@material-tailwind/react"
-import { Link } from "react-router-dom"
+} from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const Nav = ({ navbarData }) => {
-  const { logoText, navItems, buttonText } = navbarData
-  const [openNav, setOpenNav] = React.useState(false)
+  const { logoText, navItems, buttonText } = navbarData;
+  const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
-    )
-  }, [])
+    );
+  }, []);
 
   const navList = (
     <ul className="mb-4 mt-2 p-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -40,7 +39,7 @@ const Nav = ({ navbarData }) => {
         </Typography>
       ))}
     </ul>
-  )
+  );
 
   return (
     <Navbar className="top-0 fixed z-10 h-max max-w-full py-2 px-4 lg:px-8 lg:py-4 text-black glassmorph bg-[rgba(255,255,255,.9)] rounded-none">
@@ -49,7 +48,7 @@ const Nav = ({ navbarData }) => {
           <Typography
             as="a"
             href=""
-            className="cursor-pointer flex items-center lg:text-2xl font-['questrial'] font-black"
+            className="cursor-pointer flex items-center text-xl lg:text-2xl font-['questrial'] font-black"
           >
             {/* <img
             className="w-12"
@@ -73,9 +72,9 @@ const Nav = ({ navbarData }) => {
           >
             <span>{buttonText}</span>
           </Button>
-          <IconButton
-            variant="text"
-            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden flex items-center"
+          {/* Mobile-Nav */}
+          <button
+            className="h-6 w-6 lg:hidden flex items-center"
             ripple={false}
             onClick={() => setOpenNav(!openNav)}
           >
@@ -109,7 +108,7 @@ const Nav = ({ navbarData }) => {
                 />
               </svg>
             )}
-          </IconButton>
+          </button>
         </div>
       </div>
       <MobileNav open={openNav}>
@@ -119,7 +118,7 @@ const Nav = ({ navbarData }) => {
         </Button>
       </MobileNav>
     </Navbar>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

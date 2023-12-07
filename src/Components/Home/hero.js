@@ -7,7 +7,7 @@ function Hero({ data }) {
       {data.title.map((title, index) => (
         <Parallax
           key={index}
-          speed={-30}
+          speed={-10}
           className="absolute flex flex-col top-[20%] md:top-[24%] inset-0 sm:w-[90%] md:w-[70%] lg:w-[50%] px-4 md:pl-12 gap-6"
         >
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold">

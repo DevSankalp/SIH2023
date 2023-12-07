@@ -1,10 +1,20 @@
-import React from "react"
-import "./App.css"
-import Home from "./Pages/Home"
-import Dashboard from "./Pages/Dashboard"
-import Login from "./Pages/Login/Login"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { ParallaxProvider } from "react-scroll-parallax"
+import React from "react";
+import "./App.css";
+import Lenis from "@studio-freight/lenis";
+import Home from "./Pages/Home";
+import Dashboard from "./Pages/Dashboard";
+import Login from "./Pages/Login/Login";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ParallaxProvider } from "react-scroll-parallax";
+
+const lenis = new Lenis();
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
 
 function App() {
   return (
@@ -18,7 +28,7 @@ function App() {
         </Routes>
       </Router>
     </ParallaxProvider>
-  )
+  );
 }
 
-export default App
+export default App;

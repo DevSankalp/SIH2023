@@ -1,11 +1,11 @@
-import React from "react"
-import Nav from "../Components/navbar"
-import Hero from "../Components/Home/hero"
-import Footer from "../Components/footer"
-import About from "../Components/Home/about"
-import Count from "../Components/Home/count"
-import Background from "../Components/Home/homeBackground"
-import Links from "../Components/Home/quickLinks"
+import React from "react";
+import Nav from "../Components/navbar";
+import Hero from "../Components/Home/hero";
+import Footer from "../Components/footer";
+import About from "../Components/Home/about";
+import Count from "../Components/Home/count";
+import Background from "../Components/Home/homeBackground";
+import Links from "../Components/Home/quickLinks";
 
 function Home() {
   const siteData = {
@@ -64,7 +64,7 @@ function Home() {
       },
       page: "home",
     },
-  }
+  };
 
   return (
     <div className="Home">
@@ -76,7 +76,7 @@ function Home() {
       <Links data={siteData.linksData} />
       <Footer data={siteData.footerData} />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

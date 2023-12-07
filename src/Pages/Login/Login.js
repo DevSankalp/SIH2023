@@ -30,10 +30,10 @@ const AuthForm = ({
 
   return (
     <form
-      className={`flex flex-col items-center justify-center h-full px-6 md:px-10 gap-2 ${background}`}
+      className={`flex flex-col items-center md:justify-center h-full px-6 md:px-10 gap-2 ${background}`}
     >
       <h1 className="font-bold text-4xl mb-4">{formConfig.title}</h1>
-      <a href="" className="p-2 rounded-lg border-[1px] border-black bg-white">
+      <a href="/" className="p-2 rounded-lg border-[1px] border-black bg-white">
         <FcGoogle />
       </a>
       {formConfig.fields.map((field, index) => (
@@ -49,15 +49,19 @@ const AuthForm = ({
       ))}
       {formType === "signIn" && (
         <a
-          href="#"
-          className="text-sm hover:underline hover:text-[#512da8] my-4"
+          href="/"
+          className="text-sm hover:underline hover:text-[#512da8] mt-4"
         >
           Forgot Your Password?
         </a>
       )}
       <button
         onClick={handleSubmit}
-        className="shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] hover:text-[#512da8] rounded-xl py-2 px-8 hover:bg-[#c9d6ff] bg-[#512da8] text-white active:scale-[.98]"
+        className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 active:scale-[.98] ${
+          formType === "signIn"
+            ? "bg-[#512da8] text-white hover:text-[#512da8] hover:bg-[#c9d6ff]"
+            : "text-[#512da8] bg-[#c9d6ff] hover:bg-[#512da8] hover:text-white"
+        }`}
       >
         {formType === "signUp" ? "Sign Up" : "Sign In"}
       </button>
@@ -102,18 +106,57 @@ const Login = () => {
         Home
       </a>
       <div
-        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 relative overflow-hidden rounded-xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)] ${
-          clicked ? "" : ""
-        }`}
+        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 relative overflow-hidden rounded-xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
         id="container"
       >
+        {/* Small-Screen */}
         <div
-          className={`h-full transition-all duration-300 w-full md:w-1/2 pb-16 ${
-            window.innerWidth > 480
-              ? clicked
-                ? "translate-x-1/2 z-[1]"
-                : "translate-x-0 z-[1]"
-              : ""
+          className={`md:hidden bg-white flex flex-col items-center justify-center absolute h-full transition-all duration-300 w-full z-10 ${
+            clicked ? "bottom-[84%] z-[2] rounded-b-[70px]" : "bottom-0"
+          }`}
+        >
+          <AuthForm
+            formType="signIn"
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            background={`bg-white w-full justify-start mt-16`}
+          />
+          <button
+            className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mb-6 bg-[#512da8] text-white active:scale-[.98] ${
+              clicked ? "" : "hidden"
+            }`}
+            onClick={() => setClicked(!clicked)}
+          >
+            Sign In
+          </button>
+        </div>
+        <div
+          className={`md:hidden bg-[#512da8] flex flex-col items-center justify-center absolute h-full transition-all duration-300 w-full z-10 ${
+            clicked ? "top-0 z-[1]" : "top-[84%] rounded-t-[70px]"
+          }`}
+        >
+          <button
+            className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-6 bg-[#512da8] text-white active:scale-[.98] ${
+              clicked ? "hidden" : ""
+            }`}
+            onClick={() => setClicked(!clicked)}
+          >
+            Sign Up
+          </button>
+          <AuthForm
+            formType="signUp"
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            background={`text-white w-full justify-center mt-16`}
+          />
+        </div>
+
+        {/* Large-Screen */}
+        <div
+          className={`hidden md:block h-full transition-all duration-300 w-full md:w-1/2 pb-16 ${
+            clicked ? "translate-x-1/2 z-[1]" : "translate-x-0 z-[1]"
           }`}
         >
           <AuthForm
@@ -122,25 +165,6 @@ const Login = () => {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             background={`bg-white`}
-          />
-        </div>
-        <div
-          className={`md:hidden bg-[#512da8] flex flex-col items-center justify-center absolute h-full transition-all duration-300 w-full z-10 ${
-            clicked ? "top-0" : "top-[84%] rounded-t-[70px]"
-          }`}
-        >
-          <button
-            className="shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-6 bg-[#512da8] text-white active:scale-[.98]"
-            onClick={() => setClicked(!clicked)}
-          >
-            {clicked ? "Sign In" : "Sign Up"}
-          </button>
-          <AuthForm
-            formType="signUp"
-            formData={formData}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            background={`text-white`}
           />
         </div>
         <div
@@ -156,6 +180,7 @@ const Login = () => {
             background={`bg-white`}
           />
         </div>
+        {/* info-Cont */}
         <div
           className={`hidden md:block absolute w-[51%] h-full overflow-hidden transition-all duration-500 z-[10] top-0 ${
             clicked
@@ -172,7 +197,7 @@ const Login = () => {
               <div
                 key={item.id}
                 className={`absolute w-1/2 h-full flex flex-col items-center justify-center gap-2 translate-x-0 transition-all duration-500 px-8 py-0 top-0 ${
-                  item.title != "New Here !"
+                  item.title !== "New Here !"
                     ? clicked
                       ? "translate-x-0"
                       : "translate-x-[-200%]"
