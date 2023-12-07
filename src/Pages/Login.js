@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import Navbar from "../Components/navbar";
 
 const formDataConfig = {
   signUp: {
@@ -33,9 +34,14 @@ const AuthForm = ({
       className={`flex flex-col items-center md:justify-center h-full px-6 md:px-10 gap-2 ${background}`}
     >
       <h1 className="font-bold text-4xl mb-4">{formConfig.title}</h1>
-      <a href="/" className="p-2 rounded-lg border-[1px] border-black bg-white">
-        <FcGoogle />
-      </a>
+      {/* {formType === "signUp" && (
+        <a
+          href="/"
+          className="p-2 rounded-lg border-[1px] border-black bg-white"
+        >
+          <FcGoogle />
+        </a>
+      )} */}
       {formConfig.fields.map((field, index) => (
         <input
           key={index}
@@ -57,11 +63,7 @@ const AuthForm = ({
       )}
       <button
         onClick={handleSubmit}
-        className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 active:scale-[.98] ${
-          formType === "signIn"
-            ? "bg-[#512da8] text-white hover:text-[#512da8] hover:bg-[#c9d6ff]"
-            : "text-[#512da8] bg-[#c9d6ff] hover:bg-[#512da8] hover:text-white"
-        }`}
+        className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 md:mt-4 active:scale-[.98] ${"bg-[#512da8] text-white hover:text-[#512da8] hover:bg-[#c9d6ff]"}`}
       >
         {formType === "signUp" ? "Sign Up" : "Sign In"}
       </button>
@@ -97,22 +99,32 @@ const Login = () => {
     },
   ];
 
+  const navbarData = {
+    logoText: "FusionX",
+    navItems: [
+      { text: "Home", link: "/", active: true },
+      { text: "Dashboard", link: "/Dashboard" },
+      { text: "Application", link: "/" },
+      { text: "Fee Statement", link: "/" },
+      { text: "Stats", link: "/" },
+      // Add more navigation items as needed
+    ],
+    application: ["Templates", "Submitted", "Approved"],
+    buttonText: "Get Approved",
+    link: "/Login",
+  };
+
   return (
     <div className="bg-[#c9d6ff] flex items-center justify-center h-screen">
-      <a
-        href="/"
-        className="absolute top-4 md:left-4 bg-[#512da8] hover:bg-white text-white hover:text-black px-6 py-2 text-lg rounded-xl shadow-[0_0px_5px_rgba(0,0,0,0.35)] transition-all duration-300"
-      >
-        Home
-      </a>
+      <Navbar navbarData={navbarData} />
       <div
-        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 relative overflow-hidden rounded-xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
+        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 mt-16 relative overflow-hidden rounded-xl bg-[#512ba8] shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
         id="container"
       >
         {/* Small-Screen */}
         <div
-          className={`md:hidden bg-white flex flex-col items-center justify-center absolute h-full transition-all duration-300 w-full z-10 ${
-            clicked ? "bottom-[84%] z-[2] rounded-b-[70px]" : "bottom-0"
+          className={`md:hidden bg-white flex flex-col items-center justify-center absolute h-[99.7%] w-[99%] rounded-t-xl transition-all duration-300 ${
+            clicked ? "bottom-full" : "bottom-0"
           }`}
         >
           <AuthForm
@@ -120,36 +132,44 @@ const Login = () => {
             formData={formData}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            background={`bg-white w-full justify-start mt-16`}
+            background={`bg-white w-full justify-start mt-12`}
           />
-          <button
-            className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mb-6 bg-[#512da8] text-white active:scale-[.98] ${
-              clicked ? "" : "hidden"
-            }`}
-            onClick={() => setClicked(!clicked)}
-          >
-            Sign In
-          </button>
         </div>
+        {introData.map((item) => (
+          <div
+            className={`md:hidden absolute w-full h-max text-center bg-[#512da8] text-white flex flex-col items-center justify-center gap-2 transition-all duration-300 px-6 py-4 z-[2] ${
+              item.title !== "Welcome Back !"
+                ? clicked
+                  ? "bottom-full"
+                  : "bottom-0"
+                : clicked
+                ? "top-0"
+                : "top-full"
+            }`}
+          >
+            <h1 className="font-bold text-2xl">{item.title}</h1>
+            <p>{item.description}</p>
+            <button
+              className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 bg-[#512da8] text-white active:scale-[.98] ${
+                clicked ? "" : ""
+              }`}
+              onClick={() => setClicked(!clicked)}
+            >
+              {item.buttonText}
+            </button>
+          </div>
+        ))}
         <div
-          className={`md:hidden bg-[#512da8] flex flex-col items-center justify-center absolute h-full transition-all duration-300 w-full z-10 ${
-            clicked ? "top-0 z-[1]" : "top-[84%] rounded-t-[70px]"
+          className={`md:hidden bg-white flex flex-col items-center justify-center absolute h-[99.7%] w-[99%] rounded-b-xl transition-all duration-300 ${
+            clicked ? "top-0" : "top-full"
           }`}
         >
-          <button
-            className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-6 bg-[#512da8] text-white active:scale-[.98] ${
-              clicked ? "hidden" : ""
-            }`}
-            onClick={() => setClicked(!clicked)}
-          >
-            Sign Up
-          </button>
           <AuthForm
             formType="signUp"
             formData={formData}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            background={`text-white w-full justify-center mt-16`}
+            background={`w-full justify-center mt-36`}
           />
         </div>
 
@@ -180,9 +200,10 @@ const Login = () => {
             background={`bg-white`}
           />
         </div>
+
         {/* info-Cont */}
         <div
-          className={`hidden md:block absolute w-[51%] h-full overflow-hidden transition-all duration-500 z-[10] top-0 ${
+          className={`hidden md:block absolute w-[51%] h-full overflow-hidden transition-all duration-300 z-[10] top-0 ${
             clicked
               ? "-translate-x-full rounded-[0_150px_100px_0] left-[51%]"
               : "rounded-[150px_0_0_100px] left-[49%]"

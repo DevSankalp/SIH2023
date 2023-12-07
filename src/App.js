@@ -3,7 +3,7 @@ import "./App.css";
 import Lenis from "@studio-freight/lenis";
 import Home from "./Pages/Home";
 import Dashboard from "./Pages/Dashboard";
-import Login from "./Pages/Login/Login";
+import Login from "./Pages/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
 
