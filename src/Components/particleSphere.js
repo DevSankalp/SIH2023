@@ -1,22 +1,22 @@
 import React, { useEffect, useRef } from "react";
 
-const ParticleSphere = ({ width, height }) => {
-  const particleNumber = 200;
-  const angleDemul = 500;
-  const zAngleDemul = 250;
-  const maxRadius = 7;
-  const minRadius = 1;
-
+const ParticleSphere = ({
+  width,
+  height,
+  particleNumber,
+  maxRadius,
+  minRadius,
+  angleDemul,
+  zAngleDemul,
+}) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const canvasCtx = canvas.getContext("2d");
-    canvas.width = width;
-    canvas.height = height;
 
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+    const centerX = width / 2;
+    const centerY = height / 2;
     const maxX = centerX - 40;
     const maxY = centerY - 40;
     const range = maxX > maxY ? maxY : maxX;

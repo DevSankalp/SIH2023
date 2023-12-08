@@ -14,7 +14,7 @@ function Count() {
     };
   }, []);
   return (
-    <div className="h-[20vh] md:h-[30vh] bg-black text-white flex items-center overflow-hidden">
+    <div className="z-[2] relative h-[20vh] md:h-[30vh] bg-black text-white flex items-center overflow-hidden">
       <div className="w-full h-full flex flex-col items-center justify-center">
         <h1
           className="text-xl sm:text-4xl md:text-5xl w-max text-center relative"

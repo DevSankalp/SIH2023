@@ -1,10 +1,15 @@
 import React from "react";
-import ParticleSphere from "./particleSphere";
+import ParticleSphere from "../particleSphere";
 
 function Links({ data }) {
   var screenSize = window.innerWidth;
   var width = 620;
   var height = 520;
+  var particleNumber = 200;
+  var maxRadius = 7;
+  var minRadius = 1;
+  var angleDemul = 500;
+  var zAngleDemul = 250;
 
   if (screenSize < 480) {
     width = screenSize;
@@ -35,7 +40,15 @@ function Links({ data }) {
         <h1 className="text-5xl md:text-6xl text-transparent absolute block bg-[linear-gradient(to_right,#7B66FF,#5FBDFF)] bg-clip-text font-bold">
           FusionRizz<span className="block">AI ChatBot</span>
         </h1>
-        <ParticleSphere width={width} height={height} />
+        <ParticleSphere
+          width={width}
+          height={height}
+          particleNumber={particleNumber}
+          maxRadius={maxRadius}
+          minRadius={minRadius}
+          angleDemul={angleDemul}
+          zAngleDemul={zAngleDemul}
+        />
       </a>
     </div>
   );

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 // import { FcGoogle } from "react-icons/fc";
 import Navbar from "../Components/navbar";
+import ParticleSphere from "../Components/particleSphere";
+
+var background_color = "#ffffff";
+var cont_color = "#512da8";
 
 const formDataConfig = {
   signUp: {
@@ -56,14 +60,14 @@ const AuthForm = ({
       {formType === "signIn" && (
         <a
           href="/"
-          className="text-sm hover:underline hover:text-[#512da8] mt-4"
+          className={`text-sm hover:underline hover:text-[${cont_color}] mt-4`}
         >
           Forgot Your Password?
         </a>
       )}
       <button
         onClick={handleSubmit}
-        className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 md:mt-4 active:scale-[.98] ${"bg-[#512da8] text-white hover:text-[#512da8] hover:bg-[#c9d6ff]"}`}
+        className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 md:mt-4 active:scale-[.98] ${`bg-[${cont_color}] text-white hover:text-[${cont_color}] hover:bg-[#c9d6ff]`}`}
       >
         {formType === "signUp" ? "Sign Up" : "Sign In"}
       </button>
@@ -102,7 +106,7 @@ const Login = () => {
   const navbarData = {
     logoText: "FusionX",
     navItems: [
-      { text: "Home", link: "/", active: true },
+      { text: "Home", link: "/" },
       { text: "Dashboard", link: "/Dashboard" },
       { text: "Application", link: "/" },
       { text: "Fee Statement", link: "/" },
@@ -115,11 +119,37 @@ const Login = () => {
     link: "/Login",
   };
 
+  // Particles-Settings
+  var screenSize = window.innerWidth;
+  var screenSize1 = window.innerHeight;
+  const settings = {
+    width: screenSize * 2.5,
+    height: screenSize1 * 2.5,
+    particleNumber: 800,
+    maxRadius: 4,
+    minRadius: 1,
+    angleZemul: 1000,
+    zAngleDemul: 500,
+  };
+
   return (
-    <div className="bg-[#c9d6ff] flex items-center justify-center h-screen">
+    <div
+      className={`bg-[${background_color}] flex items-center justify-center h-screen`}
+    >
+      <div className="fixed">
+        <ParticleSphere
+          width={settings.width}
+          height={settings.height}
+          particleNumber={settings.particleNumber}
+          maxRadius={settings.maxRadius}
+          minRadius={settings.minRadius}
+          angleDemul={settings.angleZemul}
+          zAngleDemul={settings.zAngleDemul}
+        />
+      </div>
       <Navbar navbarData={navbarData} />
       <div
-        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 mt-16 relative overflow-hidden rounded-xl bg-[#512ba8] md:bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
+        className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 mt-16 relative overflow-hidden rounded-xl bg-[${cont_color}] md:bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
         id="container"
       >
         {/* Small-Screen */}
@@ -138,7 +168,7 @@ const Login = () => {
         </div>
         {introData.map((item) => (
           <div
-            className={`md:hidden absolute w-full h-max text-center bg-[#512da8] text-white flex flex-col items-center justify-center gap-2 transition-all duration-300 px-6 py-4 z-[2] ${
+            className={`md:hidden absolute w-full h-max text-center bg-[${cont_color}] text-white flex flex-col items-center justify-center gap-2 transition-all duration-300 px-6 py-4 z-[2] ${
               item.title !== "Welcome Back !"
                 ? clicked
                   ? "bottom-full"
@@ -151,7 +181,7 @@ const Login = () => {
             <h1 className="font-bold text-2xl">{item.title}</h1>
             <p>{item.description}</p>
             <button
-              className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 bg-[#512da8] text-white active:scale-[.98] ${
+              className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 bg-[${cont_color}] text-white active:scale-[.98] ${
                 clicked ? "" : ""
               }`}
               onClick={() => setClicked(!clicked)}
@@ -211,7 +241,7 @@ const Login = () => {
           }`}
         >
           <div
-            className={`bg-[#512da8] h-full text-white relative w-[200%] transition-all duration-500 -left-full ${
+            className={`bg-[${cont_color}] h-full text-white relative w-[200%] transition-all duration-500 -left-full ${
               clicked ? "translate-x-1/2" : ""
             }`}
           >
@@ -231,7 +261,7 @@ const Login = () => {
                 <h1 className="font-bold text-4xl">{item.title}</h1>
                 <p>{item.description}</p>
                 <button
-                  className="shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] hover:text-[#512da8] rounded-xl py-2 px-8 mt-8 hover:bg-[#c9d6ff] bg-[#512da8] text-white active:scale-[.98]"
+                  className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] hover:text-[${cont_color}] rounded-xl py-2 px-8 mt-8 hover:bg-[#c9d6ff] bg-[${cont_color}] text-white active:scale-[.98]`}
                   onClick={() => setClicked(!clicked)}
                   id={item.id}
                 >
