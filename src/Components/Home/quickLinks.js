@@ -3,7 +3,7 @@ import ParticleSphere from "../particleSphere";
 
 function Links({ data }) {
   var screenSize = window.innerWidth;
-  var width = 620;
+  var width = 560;
   var height = 520;
   var particleNumber = 200;
   var maxRadius = 7;
