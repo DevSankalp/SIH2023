@@ -2,11 +2,78 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import Navbar from "../Components/navbar";
 import ParticleSphere from "../Components/particleSphere";
+import {  signInWithEmailAndPassword   } from 'firebase/auth';
+
+
+import { auth } from "../firebase"; 
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 var background_color = "#f2ebfb";
 var cont_color = "#240046";
 
+
+
 const AuthForm = ({ formType, handleSubmit, background }) => {
+
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('');
+
+  // handleRegister
+  const handleRegister = async (event, name, email, password) => {
+    event.preventDefault(); // Prevents default form submission behavior
+    console.log(email)
+    console.log(password)
+
+    try {
+      await register(name, email, password);
+      setEmail('');setName('');setPassword('')
+      // Show success notification
+      alert('Registration successful!');
+    } catch (error) {
+      // Show error notification
+      alert('Registration failed. Please try again.');
+      console.error(error);
+    }
+  };
+
+  const register = async (name, email, password) => {
+    console.log('Key Pressed');
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, { displayName: name });
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const handleLogin = async (event,email,password) => {
+    event.preventDefault(); // Prevents default form submission behavior
+    console.log(email);
+    console.log(password);
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // Get user's display name if available
+      const user = userCredential.user;
+      if (user && user.displayName) {
+        alert(`Welcome, ${user.displayName}!`);
+      } else {
+        alert('Login successful!');
+      }
+      setEmail('');setName('');setPassword('')
+    } catch (error) {
+      // Show error notification
+      alert('Login failed. Please check your credentials.');
+      console.error(error);
+    }
+  };
+
+
+
+
   return (
     <form
       className={`flex flex-col items-center md:justify-center h-full px-6 md:px-10 gap-2 ${background}`}
@@ -29,18 +96,25 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
           <input
             type="name"
             placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}  
+            required                                 
             name="fullName"
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
           <input
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             name="email"
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
           <input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             name="password"
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
@@ -50,12 +124,16 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
           <input
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             name="email"
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
           <input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             name="password"
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
@@ -69,12 +147,18 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
           Forgot Your Password?
         </a>
       )}
+      {formType === "signUp" ? 
       <button
-        onClick={handleSubmit}
+        onClick={(event) => handleRegister(event, name, email, password)}
         className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
-      >
-        {formType === "signUp" ? "Sign Up" : "Sign In"}
-      </button>
+      > Sign Up
+        </button>
+         :
+         <button
+         onClick={(event) => handleLogin(event, email, password)}
+         className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
+       > Sign In
+         </button>}
     </form>
   );
 };
