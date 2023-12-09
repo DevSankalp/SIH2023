@@ -38,7 +38,7 @@ function Links({ data }) {
         className="shadow-[0_0_10px_rgba(0,0,0,0.2)] md:shadow-none relative flex items-center justify-center bg-[#E5D4FF]"
       >
         <h1 className="text-5xl md:text-6xl text-transparent absolute block bg-[linear-gradient(to_right,#7B66FF,#5FBDFF)] bg-clip-text font-bold">
-          FusionRizz<span className="block">AI ChatBot</span>
+          FusionWizz<span className="block">AI ChatBot</span>
         </h1>
         <ParticleSphere
           width={width}

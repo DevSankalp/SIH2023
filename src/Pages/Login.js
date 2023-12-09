@@ -1,62 +1,66 @@
 import React, { useState } from "react";
-// import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 import Navbar from "../Components/navbar";
 import ParticleSphere from "../Components/particleSphere";
 
 var background_color = "#f2ebfb";
 var cont_color = "#240046";
 
-const formDataConfig = {
-  signUp: {
-    title: "Create Account",
-    fields: [
-      { type: "text", placeholder: "Full Name", name: "fullName" },
-      { type: "email", placeholder: "Email", name: "email" },
-      { type: "password", placeholder: "Password", name: "password" },
-    ],
-  },
-  signIn: {
-    title: "Sign In",
-    fields: [
-      { type: "email", placeholder: "Email", name: "email" },
-      { type: "password", placeholder: "Password", name: "password" },
-    ],
-  },
-};
-
-const AuthForm = ({
-  formType,
-  formData,
-  handleChange,
-  handleSubmit,
-  background,
-}) => {
-  const formConfig = formDataConfig[formType];
-
+const AuthForm = ({ formType, handleSubmit, background }) => {
   return (
     <form
       className={`flex flex-col items-center md:justify-center h-full px-6 md:px-10 gap-2 ${background}`}
     >
-      <h1 className="font-bold text-4xl mb-4">{formConfig.title}</h1>
-      {/* {formType === "signUp" && (
-        <a
-          href="/"
-          className="p-2 rounded-lg border-[1px] border-black bg-white"
-        >
-          <FcGoogle />
-        </a>
-      )} */}
-      {formConfig.fields.map((field, index) => (
-        <input
-          key={index}
-          type={field.type}
-          placeholder={field.placeholder}
-          name={field.name}
-          value={formData[field.name] || ""}
-          onChange={handleChange}
-          className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
-        />
-      ))}
+      <h1 className="font-bold text-4xl mb-4">
+        {formType === "signIn" ? "Sign In" : "Create Account"}
+      </h1>
+      {window.innerWidth < 720
+        ? formType === "signUp" && (
+            <a
+              href="/"
+              className="p-2 rounded-lg border-[1px] border-black bg-white"
+            >
+              <FcGoogle />
+            </a>
+          )
+        : ""}
+      {formType === "signUp" ? (
+        <>
+          <input
+            type="name"
+            placeholder="Full Name"
+            name="fullName"
+            className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
+          />
+        </>
+      ) : (
+        <>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
+          />
+        </>
+      )}
       {formType === "signIn" && (
         <a
           href="/"
@@ -155,7 +159,7 @@ const Login = () => {
       >
         {/* Small-Screen */}
         <div
-          className={`md:hidden bg-white flex flex-col items-center justify-center absolute h-[99.7%] w-[99%] rounded-t-xl transition-all duration-300 ${
+          className={`lg:hidden bg-white flex flex-col items-center justify-center absolute h-[99.7%] w-[99%] rounded-t-xl transition-all duration-300 ${
             clicked ? "bottom-full" : "bottom-0"
           }`}
         >
@@ -191,7 +195,7 @@ const Login = () => {
           </div>
         ))}
         <div
-          className={`md:hidden bg-white flex flex-col items-center justify-center absolute h-[99.7%] w-[99%] rounded-b-xl transition-all duration-300 ${
+          className={`lg:hidden bg-white flex flex-col items-center justify-center absolute h-[99.7%] w-[99%] rounded-b-xl transition-all duration-300 ${
             clicked ? "top-0" : "top-full"
           }`}
         >
@@ -206,7 +210,7 @@ const Login = () => {
 
         {/* Large-Screen */}
         <div
-          className={`hidden md:block h-full transition-all duration-300 w-full md:w-1/2 ${
+          className={`hidden lg:block h-full transition-all duration-300 w-1/2 ${
             clicked ? "translate-x-1/2 z-[1]" : "translate-x-0 z-[1]"
           }`}
         >
@@ -219,7 +223,7 @@ const Login = () => {
           />
         </div>
         <div
-          className={`hidden md:block h-full transition-all duration-300 w-1/2 ${
+          className={`hidden lg:block h-full transition-all duration-300 w-1/2 ${
             clicked ? "translate-x-0 z-[2]" : "-translate-x-1/2 z-[0]"
           }`}
         >
