@@ -3,13 +3,12 @@ import { FcGoogle } from "react-icons/fc";
 import Navbar from "../Components/navbar";
 import ParticleSphere from "../Components/particleSphere";
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
-
-
 import { auth } from "../firebase"; 
 import {
   createUserWithEmailAndPassword,
-  updateProfile,
+  updateProfile, sendPasswordResetEmail,
 } from "firebase/auth";
+
 
 var background_color = "#f2ebfb";
 var cont_color = "#240046";
@@ -70,6 +69,28 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
       console.error(error);
     }
   };
+
+  const [showResetModal, setShowResetModal] = useState(false);
+  const [emailForReset, setEmailForReset] = useState('');
+
+  const handleResetLinkClick = () => {
+    setShowResetModal(true);
+  };
+  const hideModal = () => {
+    setShowResetModal(false);
+  };
+
+  const handleResetSubmit = async (event, emailForReset) => {
+    event.preventDefault();
+    try {
+      await sendPasswordResetEmail(auth, emailForReset);
+      alert('Password reset email sent!');
+      setShowResetModal(false);
+    } catch (error) {
+      alert('Error sending password reset email. Please try again.');
+      console.error(error);
+    }
+  }
 
 
 
@@ -141,11 +162,54 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
       )}
       {formType === "signIn" && (
         <a
-          href="/"
+          onClick={handleResetLinkClick}
           className={`text-sm hover:underline hover:text-[#512da8] mt-4`}
         >
           Forgot Your Password?
         </a>
+      )}
+      {showResetModal && (
+        <div className="fixed flex items-center justify-center h-full px-6 md:px-10 gap-2 z-100 inset-0 bg-opacity-50">
+            <button
+              className={`absolute top-4 left-8 shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-4 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
+              onClick={hideModal}
+            >
+              {/* Back arrow icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+          <div className="bg-white p-8 rounded-md max-w-md w-full h-full flex flex-col items-center md:justify-center">
+            <h2 className="font-bold text-4xl mb-4 text-center">Reset Password</h2>
+            <form className="flex flex-col items-center md:justify-center">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={emailForReset}
+                onChange={(e) => setEmailForReset(e.target.value)}
+                className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
+              />
+              <button
+                type="submit"
+                onClick={(event) => handleResetSubmit(event, emailForReset)}
+                className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
+              >
+                Send Reset Email
+              </button>
+            </form>
+          </div>
+        </div>
       )}
       {formType === "signUp" ? 
       <button
