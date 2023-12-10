@@ -1,18 +1,19 @@
 import React from "react";
 import Nav from "../Components/navbar";
-import Hero from "../Components/Home/hero";
-import Footer from "../Components/footer";
-import About from "../Components/Home/about";
-import Count from "../Components/Home/count";
 import Background from "../Components/Home/homeBackground";
+import Hero from "../Components/Home/hero";
+import Count from "../Components/Home/count";
+import About from "../Components/Home/about";
 import Links from "../Components/Home/quickLinks";
+import Footer from "../Components/footer";
+import Chat from "../Components/chat";
 
 function Home() {
   const siteData = {
     navbarData: {
       logoText: "FusionX",
       navItems: [
-        { text: "Home", link: "/", active: true },
+        { text: "Home", active: true },
         { text: "Dashboard", link: "/Dashboard" },
         { text: "Application", link: "/" },
         { text: "Fee Statement", link: "/" },
@@ -75,6 +76,7 @@ function Home() {
       <About data={siteData.aboutData} />
       <Links data={siteData.linksData} />
       <Footer data={siteData.footerData} />
+      <Chat />
     </div>
   );
 }

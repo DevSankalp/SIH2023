@@ -1,15 +1,34 @@
 import React from "react";
 import Data from "../Components/DashBoard/dData";
 import Sidebar from "../Components/DashBoard/sideBar";
-import logoImg from "../Components/Assets/logo.png";
+import Background from "../Components/DashBoard/background";
 
 function Dashboard() {
-  const dashBoardData = {};
+  const dashBoardData = {
+    userData: {
+      userName: "DemoUser",
+      userImg:
+        "https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg",
+    },
+    navData: {
+      items: [
+        { title: "Dashboard", active: true },
+        { title: "Statement", link: "/" },
+        { title: "Handbook", link: "/" },
+        { title: "Support", link: "/" },
+        { title: "Report", link: "/" },
+      ],
+    },
+  };
 
   return (
-    <div className="Dashboard h-[100vh] flex flex-col items-end bg-[#f3f6fd]">
-      <div className="grid grid-cols-[20%_80%] h-full w-full">
-        <Sidebar />
+    <div className="Dashboard md:h-[100vh] flex flex-col items-end bg-transparent">
+      <Background />
+      <div className="grid md:grid-cols-[20%_80%] h-full w-full bg-transparent">
+        <Sidebar
+          userData={dashBoardData.userData}
+          navData={dashBoardData.navData}
+        />
         <Data />
       </div>
     </div>

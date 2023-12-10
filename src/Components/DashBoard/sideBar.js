@@ -1,56 +1,94 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../Assets/logo.png";
-import { CgProfile } from "react-icons/cg";
 import { LiaMoneyCheckAltSolid } from "react-icons/lia";
-import { LuBookMinus } from "react-icons/lu";
+import { LuBookMinus, LuLayoutDashboard } from "react-icons/lu";
 import { BiSupport } from "react-icons/bi";
-import { TbReportSearch } from "react-icons/tb";
-
-const infoData = {
-  title: ["Profile", "Fee Statement", "Handbook", "Support", "Report"],
-};
+import { TbReportSearch, TbLogout } from "react-icons/tb";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { IoCloseCircle } from "react-icons/io5";
 
 const iconArr = [
-  <CgProfile className="text-xl" />,
-  <LiaMoneyCheckAltSolid className="text-xl" />,
-  <LuBookMinus className="text-xl" />,
-  <BiSupport className="text-xl" />,
-  <TbReportSearch className="text-xl" />,
+  <LuLayoutDashboard />,
+  <LiaMoneyCheckAltSolid />,
+  <LuBookMinus />,
+  <BiSupport />,
+  <TbReportSearch />,
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ userData, navData }) => {
+  const [openNav, setOpenNav] = useState(false);
+  const { userName, userImg } = userData;
+  const { items } = navData;
+
   return (
-    <aside>
-      <div className="sideBarBg h-full w-full transition-all duration-500 p-8 text-white font-questrial">
-        <div className="flex flex-row mb-5">
-          <a
-            href="/"
-            className="flex gap-5 flex-row justify-center items-center text-2xl mb-5 font-questrial font-bold shadow-sm p-5"
-          >
-            <img src={logo} alt="fusionX" className="rounded-full w-10 h-10" />
-            FusionX
-          </a>
+    <div
+      className={`h-screen py-2 md:py-0 w-[75vw] md:w-auto fixed md:static z-10 transition-all duration-500 ${
+        openNav ? "left-0" : "-left-[63%]"
+      }`}
+    >
+      <div className="relative h-full w-full transition-all duration-500 flex flex-col justify-around items-center py-8 glassmorph rounded-r-xl md:rounded-none">
+        {/* Mobile-Toggle-btn */}
+        <button
+          className="h-6 w-6 md:hidden flex items-center absolute top-4 right-4"
+          ripple={false}
+          onClick={() => setOpenNav(!openNav)}
+        >
+          {openNav ? (
+            <IoCloseCircle className="w-full h-full" />
+          ) : (
+            <HiOutlineMenuAlt3 className="w-full h-full" />
+          )}
+        </button>
+
+        <div className="flex flex-col items-center justify-center gap-8">
+          {/* Logo */}
+          <div className="flex gap-2 justify-center items-center">
+            <img src={logo} alt="fusionXLogo" className="w-8 h-8" />
+            <a href="/" className="text-3xl font-bold">
+              FusionX
+            </a>
+          </div>
+
+          {/* User-Profile */}
+          <div className="flex flex-col items-center justify-center gap-4">
+            <img
+              src={userImg}
+              alt="Avatar"
+              className="w-32 h-32 rounded-full object-cover border-white border-2 shadow-[0_0_5px_rgba(0,0,0,0.5)]"
+            />
+            <h1 className="text-xl">{userName}</h1>
+          </div>
         </div>
-        <div class="navigation">
-          <div className="w-full flex flex-col items-center gap-2">
-            {infoData.title.map((title, index) => (
+
+        {/* Navigations */}
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col gap-4 justify-center">
+            {items.map((item, index) => (
               <a
                 key={index}
-                href=""
-                className="w-full hover:bg-white hover:text-[#824ad7] group rounded-md p-2 transition-all duration-500"
+                href={item.link}
+                className={`w-max rounded-md transition-all duration-300 relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[6%] before:origin-left before:duration-500 ${
+                  item.active
+                    ? ""
+                    : "before:scale-x-0 md:before:hover:scale-x-100"
+                }`}
               >
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center justify-center text-[16px]">
                   <span>{iconArr[index]}</span>
-                  <h1 className="title text-lg text-white font-questrial pl-3 group-hover:text-[#824ad7]">
-                    {title}
-                  </h1>
+                  <h1 className="h-max">{item.title}</h1>
                 </div>
               </a>
             ))}
           </div>
         </div>
+
+        {/* Logout-button */}
+        <button className="flex items-center justify-center gap-6 cursor-pointer px-4 py-2 hover:bg-[#240046] hover:text-white rounded-lg duration-300 shadow-[0_0_5px_rgba(0,0,0,.2)] active:scale-[.98]">
+          <h1>LogOut</h1>
+          <TbLogout />
+        </button>
       </div>
-    </aside>
+    </div>
   );
 };
 
