@@ -5,7 +5,7 @@ import {
   ParallaxBannerLayer,
 } from "react-scroll-parallax";
 
-function About({ data }) {
+function About() {
   const [font, setFont] = useState(1);
   const [position, setPosition] = useState(400);
 
@@ -59,22 +59,24 @@ function About({ data }) {
           speed={20}
           className="flex flex-col items-center justify-start"
         >
-          {data.title.map((title, index) => (
-            <div
-              key={index}
-              className="w-full flex flex-col items-center gap-4 md:gap-12"
+          <div className="w-full flex flex-col items-center gap-4 md:gap-12">
+            <h1
+              className="text-transparent bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold"
+              style={{ fontSize: `${font}px` }}
             >
-              <h1
-                className="text-transparent bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold"
-                style={{ fontSize: `${font}px` }}
-              >
-                {title}
-              </h1>
-              <div className="w-[70%] text-justify flex items-center">
-                <p>{data.description}</p>
-              </div>
+              About Us
+            </h1>
+            <div className="w-[70%] text-justify flex items-center">
+              <p>
+                This platform enables institutes and stakeholders to input
+                specific course and infrastructure details, receiving in return
+                all required documents and fee structures. Its core objective is
+                to simplify AICTE's Approval Process Handbook, offering benefits
+                such as enhanced clarity, customized guidance, and streamlined
+                processes, resulting in time and resource efficiency.
+              </p>
             </div>
-          ))}
+          </div>
         </Parallax>
 
         {/* About-Image */}

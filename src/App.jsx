@@ -4,6 +4,7 @@ import Lenis from "@studio-freight/lenis";
 import Home from "./Pages/Home";
 import Dashboard from "./Pages/Dashboard";
 import Login from "./Pages/Login";
+import Stats from "./Pages/stats";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/SIH2023" element={<Home />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Stats" element={<Stats />} />
         </Routes>
       </Router>
     </ParallaxProvider>

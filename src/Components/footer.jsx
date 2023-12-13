@@ -45,7 +45,7 @@ function Footer({ data }) {
             {navItems.map((items, index) => (
               <li
                 key={index}
-                className="w-max relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[1.5px] before:scale-x-0 lg:before:hover:scale-x-100 before:origin-left before:duration-300"
+                className="w-max relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[7%] before:scale-x-0 lg:before:hover:scale-x-100 before:origin-left before:duration-300"
               >
                 <a href={items.link}>{items.text}</a>
               </li>
@@ -68,7 +68,7 @@ function Footer({ data }) {
             <p>{items.text}</p>
             <a
               href={items.link}
-              className="w-max relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[1.5px] sm:before:scale-x-0 sm:before:hover:scale-x-100 before:origin-left before:duration-300"
+              className="w-max relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[7%] sm:before:scale-x-0 sm:before:hover:scale-x-100 before:origin-left before:duration-300"
             >
               {items.link}
             </a>
