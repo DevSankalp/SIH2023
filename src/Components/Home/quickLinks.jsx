@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ParticleSphere from "../particleSphere";
 
 function Links({ data }) {
-  var screenSize = window.innerWidth;
-  var width = 560;
+  const [width, setWidth] = useState(window.innerWidth);
   var height = 520;
   var particleNumber = 200;
   var maxRadius = 7;
@@ -11,12 +10,17 @@ function Links({ data }) {
   var angleDemul = 500;
   var zAngleDemul = 250;
 
-  if (screenSize < 480) {
-    width = screenSize;
-  }
+  // Particle-Width-Controller
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth < 480 && setWidth(window.innerWidth - 20)
+    );
+  }, []);
 
   return (
     <div className="md:h-[70vh] w-full md:grid md:grid-cols-[60%_40%] bg-white relative shadow-[0_0_10px_rgba(0,0,0,.3)]">
+      {/* Links-Container */}
       <div className="w-full h-full flex flex-col items-center gap-16 md:gap-24 pb-12 md:p-0">
         <h1 className="text-4xl text-center md:text-start md:text-6xl mt-12 md:mt-24 w-[90%] font-bold relative before:absolute before:w-full before:h-1 before:left-0 before:-bottom-4 before:bg-black">
           Quick Links
@@ -33,12 +37,14 @@ function Links({ data }) {
           ))}
         </div>
       </div>
+
+      {/* Chatbot-Info */}
       <a
         href="/"
         className="shadow-[0_0_10px_rgba(0,0,0,0.2)] md:shadow-none relative flex items-center justify-center bg-[#E5D4FF]"
       >
         <h1 className="text-5xl md:text-6xl text-transparent absolute block bg-[linear-gradient(to_right,#7B66FF,#5FBDFF)] bg-clip-text font-bold">
-          FusionWizz<span className="block">AI ChatBot</span>
+          Chanakaya<span className="block text-center">AI ChatBot</span>
         </h1>
         <ParticleSphere
           width={width}

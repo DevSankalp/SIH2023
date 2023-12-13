@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import Navbar from "../Components/navbar";
 import ParticleSphere from "../Components/particleSphere";
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
@@ -8,7 +7,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile, sendPasswordResetEmail,
 } from "firebase/auth";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 
@@ -43,7 +42,6 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
   };
 
   const register = async (name, email, password) => {
-    console.log('Key Pressed');
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, { displayName: name });
@@ -57,10 +55,7 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      if (user && user.displayName) {
-        // If login successful, navigate to '/dashboard'
-
-      }
+      navigate("/Dashboard")
       setEmail('');
       setPassword('');
     } catch (error) {
@@ -126,9 +121,6 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
     }
   }
 
-
-
-
   return (
     <form
       className={`flex flex-col items-center md:justify-center h-full px-6 md:px-10 gap-2 ${background}`}
@@ -136,16 +128,6 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
       <h1 className="font-bold text-4xl mb-4">
         {formType === "signIn" ? "Sign In" : "Create Account"}
       </h1>
-      {window.innerWidth < 720
-        ? formType === "signUp" && (
-            <a
-              href="/"
-              className="p-2 rounded-lg border-[1px] border-black bg-white"
-            >
-              <FcGoogle />
-            </a>
-          )
-        : ""}
       {formType === "signUp" ? (
         <>
           <input
@@ -320,9 +302,10 @@ const Login = () => {
 
   return (
     <div
-      className={`bg-[#] flex items-center justify-center h-screen`}
+      className={`flex items-center justify-center h-screen`}
       style={{ background: background_color }}
     >
+      {/* Particles */}
       <div className="fixed">
         <ParticleSphere
           width={settings.width}
@@ -353,9 +336,10 @@ const Login = () => {
             background={`bg-white w-full justify-start mt-12`}
           />
         </div>
-        {introData.map((item) => (
+        {introData.map((item, index) => (
           <div
-            className={`md:hidden absolute w-full h-max text-center bg-[#] text-white flex flex-col items-center justify-center gap-2 transition-all duration-300 px-6 py-4 z-[2] ${
+            key={index}
+            className={`md:hidden absolute w-full h-max text-center text-white flex flex-col items-center justify-center gap-2 transition-all duration-300 px-6 py-2 z-[2] ${
               item.title !== "Welcome Back !"
                 ? clicked
                   ? "bottom-full"
@@ -393,7 +377,7 @@ const Login = () => {
         {/* Large-Screen */}
         <div
           className={`hidden lg:block h-full transition-all duration-300 w-1/2 ${
-            clicked ? "translate-x-1/2 z-[1]" : "translate-x-0 z-[1]"
+            clicked ? "translate-x-1/2 z-[1] invisible" : "translate-x-0 z-[1]"
           }`}
         >
           <AuthForm
@@ -406,7 +390,7 @@ const Login = () => {
         </div>
         <div
           className={`hidden lg:block h-full transition-all duration-300 w-1/2 ${
-            clicked ? "translate-x-0 z-[2]" : "-translate-x-1/2 z-[0]"
+            clicked ? "translate-x-0 z-[2]" : "-translate-x-1/2 z-[0] invisible"
           }`}
         >
           <AuthForm
@@ -427,7 +411,7 @@ const Login = () => {
           }`}
         >
           <div
-            className={`bg-[#] h-full text-white relative w-[200%] transition-all duration-500 -left-full ${
+            className={`h-full text-white relative w-[200%] transition-all duration-500 -left-full ${
               clicked ? "translate-x-1/2" : ""
             }`}
             style={{ background: cont_color }}
@@ -438,10 +422,10 @@ const Login = () => {
                 className={`absolute w-1/2 h-full flex flex-col items-center justify-center gap-2 translate-x-0 transition-all duration-500 px-8 py-0 top-0 ${
                   item.title !== "New Here !"
                     ? clicked
-                      ? "translate-x-0"
-                      : "translate-x-[-200%]"
+                      ? "translate-x-0 left-0"
+                      : "-translate-x-full left-0"
                     : clicked
-                    ? "translate-x-[200%]"
+                    ? "translate-x-full right-0"
                     : "translate-x-0 right-0"
                 }`}
               >

@@ -22,10 +22,9 @@ function Tracker() {
       unsubscribe();
     };
   }, []);
-
   return (
-    <div className="bg-white rounded-xl p-4 overflow-hidden shadow-[0_0_5px_rgba(0,0,0,.2)] mb-8">
-<h1 className="text-3xl font-bold mb-4">Welcome to the Dashboard</h1>
+    <div className="glassmorph p-4 rounded-xl shadow-[0_0_5px_rgba(0,0,0,.2)] md:mb-8 sticky top-0 md:static">
+      <h1 className="text-3xl font-bold mb-4">Welcome to the Dashboard</h1>
       {user && (
         <div>
           <p className="text-lg">
