@@ -8,6 +8,8 @@ import {
   createUserWithEmailAndPassword,
   updateProfile, sendPasswordResetEmail,
 } from "firebase/auth";
+import { NavLink, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 
 var background_color = "#f2ebfb";
@@ -20,18 +22,19 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('')
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  
 
   // handleRegister
   const handleRegister = async (event, name, email, password) => {
     event.preventDefault(); // Prevents default form submission behavior
-    console.log(email)
-    console.log(password)
 
     try {
       await register(name, email, password);
       setEmail('');setName('');setPassword('')
       // Show success notification
       alert('Registration successful!');
+      handleLogin(event,email,password);
     } catch (error) {
       // Show error notification
       alert('Registration failed. Please try again.');
@@ -50,21 +53,51 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
   };
 
   const handleLogin = async (event,email,password) => {
-    event.preventDefault(); // Prevents default form submission behavior
-    console.log(email);
-    console.log(password);
+    event.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      // Get user's display name if available
       const user = userCredential.user;
       if (user && user.displayName) {
-        alert(`Welcome, ${user.displayName}!`);
-      } else {
-        alert('Login successful!');
+        // If login successful, navigate to '/dashboard'
+
       }
-      setEmail('');setName('');setPassword('')
+      setEmail('');
+      setPassword('');
     } catch (error) {
-      // Show error notification
+      alert('Login failed. Please check your credentials.');
+      console.error(error);
+    }
+  };
+  const handleLoginFirst = async (event,email,password) => {
+    event.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const currentUser = auth.currentUser;
+    if (currentUser) {
+      const userData = {
+        UID: currentUser.uid,
+        email: currentUser.email,
+        name: currentUser.displayName || 'Default Name', // Use display name or a default name if not available
+      };
+
+      // Make a POST request to your API using Axios to create user data entry
+      axios.post('http://localhost:1337/api/userdata', { data: userData })
+        .then((response) => {
+          console.log('Entry created:', response.data);
+          navigate('/Dashboard')
+        })
+        .catch((error) => {
+          console.error('Error creating entry:', error);
+          // Show error notification for entry creation
+          alert('Error creating user data entry. Please try again.');
+        });
+    } else {
+      // If currentUser is null, show error notification
+      alert('User not found. Please log in again.');
+    }
+      setEmail('');
+      setPassword('');
+    } catch (error) {
       alert('Login failed. Please check your credentials.');
       console.error(error);
     }
@@ -85,10 +118,11 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
     try {
       await sendPasswordResetEmail(auth, emailForReset);
       alert('Password reset email sent!');
+      setEmailForReset('');
       setShowResetModal(false);
     } catch (error) {
-      alert('Error sending password reset email. Please try again.');
-      console.error(error);
+      // Handle specific error when email doesn't exist
+      console.log(error)
     }
   }
 

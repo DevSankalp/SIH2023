@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Navbar,
   MobileNav,
@@ -6,8 +6,22 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { auth } from './../firebase'; 
 
 const Nav = ({ navbarData }) => {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // This effect runs on component mount
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    // Clean up the observer when component unmounts
+    return () => unsubscribe();
+  }, []);
+
   const { logoText, navItems, buttonText } = navbarData;
   const [openNav, setOpenNav] = React.useState(false);
 
@@ -60,12 +74,22 @@ const Nav = ({ navbarData }) => {
         </div>
         <div className="mr-4 hidden lg:block">{navList}</div>
         <div className="flex items-center gap-4 p-2">
-          <Link
+
+        {user ? (
+        // If user is logged in, display Log Out button
+        <button className={`bg-gray-800 rounded-lg p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class}`} onClick={() => auth.signOut()}>Log Out</button>
+      ) : (
+        // If user is not logged in, display Log In button
+        <Link
             to={navbarData.link}
             className={`bg-gray-800 rounded-lg p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class}`}
           >
             Log In
           </Link>
+      )}
+
+
+          
           <Button
             size="sm"
             className="hidden lg:inline-block bg-black text-white hover:bg-white hover:text-black drop-shadow-md duration-500"
