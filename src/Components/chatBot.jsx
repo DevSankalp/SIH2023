@@ -1,7 +1,7 @@
 import React from "react";
 
-function Chat() {
+function ChatBot() {
   return <div className=""></div>;
 }
 
-export default Chat;
+export default ChatBot;

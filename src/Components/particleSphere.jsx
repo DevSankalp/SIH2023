@@ -14,7 +14,6 @@ const ParticleSphere = ({
   useEffect(() => {
     const canvas = canvasRef.current;
     const canvasCtx = canvas.getContext("2d");
-
     const centerX = width / 2;
     const centerY = height / 2;
     const maxX = centerX - 40;
@@ -23,7 +22,6 @@ const ParticleSphere = ({
 
     // Generate particles
     const particles = generateParticles(particleNumber);
-
     function Particle() {
       this.angle = Math.random() * 2 * Math.PI;
       this.vangle = Math.random() / angleDemul;
@@ -81,7 +79,6 @@ const ParticleSphere = ({
       updateParticles();
       requestAnimationFrame(animate);
     }
-
     animate();
 
     return () => {};

@@ -12,6 +12,7 @@ function Dashboard() {
     },
     navData: {
       items: [
+        { title: "Home", link: "/" },
         { title: "Dashboard", active: true },
         { title: "Statement", link: "/" },
         { title: "Handbook", link: "/" },

@@ -7,6 +7,7 @@ function Background() {
       className="h-[100vh] top-0 z-[-1]"
       style={{ position: "sticky" }}
     >
+      {/* Layer1 */}
       <ParallaxBannerLayer
         speed={-30}
         className="md:h-max"
@@ -18,6 +19,8 @@ function Background() {
           className="w-full h-full md:h-auto object-cover"
         />
       </ParallaxBannerLayer>
+
+      {/* Layer2 */}
       <ParallaxBannerLayer
         speed={-10}
         className="md:h-max"

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import logo from "../Assets/logo.png";
-import { LiaMoneyCheckAltSolid } from "react-icons/lia";
 import { LuBookMinus, LuLayoutDashboard } from "react-icons/lu";
+import { LiaMoneyCheckAltSolid } from "react-icons/lia";
 import { BiSupport } from "react-icons/bi";
 import { TbReportSearch, TbLogout } from "react-icons/tb";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { IoCloseCircle } from "react-icons/io5";
+import { IoCloseCircle, IoHomeOutline } from "react-icons/io5";
 
 const iconArr = [
+  <IoHomeOutline />,
   <LuLayoutDashboard />,
   <LiaMoneyCheckAltSolid />,
   <LuBookMinus />,
@@ -22,15 +23,14 @@ const Sidebar = ({ userData, navData }) => {
 
   return (
     <div
-      className={`h-screen py-2 md:py-0 w-[75vw] md:w-auto fixed md:static z-10 transition-all duration-500 ${
+      className={`h-screen py-2 md:pl-8 md:py-8 w-[75vw] md:w-auto fixed md:static z-10 transition-all duration-500 ${
         openNav ? "left-0" : "-left-[63%]"
       }`}
     >
-      <div className="relative h-full w-full transition-all duration-500 flex flex-col justify-around items-center py-8 glassmorph rounded-r-xl md:rounded-none">
+      <div className="relative h-full w-full transition-all duration-500 flex flex-col justify-around items-center py-8 glassmorph rounded-r-xl md:rounded-xl">
         {/* Mobile-Toggle-btn */}
         <button
           className="h-6 w-6 md:hidden flex items-center absolute top-4 right-4"
-          ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
           {openNav ? (
@@ -42,12 +42,10 @@ const Sidebar = ({ userData, navData }) => {
 
         <div className="flex flex-col items-center justify-center gap-8">
           {/* Logo */}
-          <div className="flex gap-2 justify-center items-center">
+          <a href="/" className="flex gap-2 justify-center items-center">
             <img src={logo} alt="fusionXLogo" className="w-8 h-8" />
-            <a href="/" className="text-3xl font-bold">
-              FusionX
-            </a>
-          </div>
+            <p className="text-3xl font-bold">FusionX</p>
+          </a>
 
           {/* User-Profile */}
           <div className="flex flex-col items-center justify-center gap-4">
@@ -83,10 +81,13 @@ const Sidebar = ({ userData, navData }) => {
         </div>
 
         {/* Logout-button */}
-        <button className="flex items-center justify-center gap-6 cursor-pointer px-4 py-2 hover:bg-[#240046] hover:text-white rounded-lg duration-300 shadow-[0_0_5px_rgba(0,0,0,.2)] active:scale-[.98]">
+        <a
+          href="/"
+          className="flex items-center justify-center gap-6 cursor-pointer px-4 py-2 hover:bg-[#240046] hover:text-white rounded-lg duration-300 shadow-[0_0_5px_rgba(0,0,0,.2)] active:scale-[.98]"
+        >
           <h1>LogOut</h1>
           <TbLogout />
-        </button>
+        </a>
       </div>
     </div>
   );
