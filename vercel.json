@@ -1,7 +1,7 @@
 {
-  "rewrites":  [
-    {"source": "/SIH2023", "destination": "/"},
-    {"source": "/Dashboard", "destination": "/Dashboard"},
-    {"source": "/Login", "destination": "/Login"}
+  "routes":  [
+    {"src": "/SIH2023", "dest": "/"},
+    {"src": "/Dashboard", "dest": "/Dashboard"},
+    {"src": "/Login", "dest": "/Login"}
   ]
 }
