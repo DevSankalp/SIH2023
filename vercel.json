@@ -1,0 +1,7 @@
+{
+  "rewrites":  [
+    {"source": "/SIH2023", "destination": "/"},
+    {"source": "/Dashboard", "destination": "/Dashboard"},
+    {"source": "/Login", "destination": "/Login"}
+  ]
+}
