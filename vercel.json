@@ -1,7 +1,5 @@
 {
-  "routes":  [
-    {"src": "/SIH2023", "dest": "/"},
-    {"src": "/Dashboard", "dest": "/Dashboard"},
-    {"src": "/Login", "dest": "/Login"}
+  "rewrites":  [
+    {"source": "/(.*)", "destination": "/"}
   ]
 }
