@@ -6,6 +6,9 @@ import {
 } from "react-scroll-parallax";
 import Testimonials from "./testimonials";
 import InfoBot from "./infoBot";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function About(animate) {
   const [font, setFont] = useState(1);
@@ -27,8 +30,50 @@ function About(animate) {
     };
   }, []);
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+    fade: true,
+    cssEase: "linear",
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  const featureData = [
+    {
+      head: "Enhanced Clarity and Ease of Understanding",
+      description:
+        "Transforming complex language and technical jargon into easily understandable information ensures that institutes comprehend AICTE's requirements with clarity.",
+    },
+    {
+      head: "Customized Guidance and Relevant Documentation",
+      description:
+        "The portal dynamically generates documentation templates and fee structures based on the specific course requirements inputted by the institute, ensuring relevance and accuracy.",
+    },
+    {
+      head: "Time and Resource Efficiency",
+      description:
+        "By automating the parsing and presentation of information, Fusion significantly reduces the time and effort required to interpret and navigate the Approval Process Handbook.",
+    },
+    {
+      head: "Increased Accuracy and Compliance",
+      description:
+        "Clear instructions provided by Fusion facilitate accurate adherence to AICTE's guidelines, resulting in higher-quality submissions and reduced need for reworks.",
+    },
+    {
+      head: "Continuous Updates and Real-time Assistance",
+      description:
+        "The AI-based portal ensures continuous updates to reflect changes in the Approval Process Handbook and offers real-time assistance to address queries during the approval process.",
+    },
+  ];
+
   return (
-    <div className="">
+    <>
       <Parallax speed={20} className="sticky top-0 z-[0]">
         {/* {Motto} */}
         <div
@@ -50,11 +95,12 @@ function About(animate) {
           </div>
         </div>
 
-        {/* About */}
+        {/* About_cont */}
         <div
           id="about"
           className="md:grid md:grid-cols-2 h-[80vh] overflow-hidden bg-[rgba(255,255,255,.8)] md:bg-white"
         >
+          {/* About-Us */}
           <div
             className={`flex flex-col items-center justify-start pt-8 duration-[1500ms] relative before:absolute md:before:w-2/3 before:h-1/3 before:left-0 before:bottom-1/3 before:bg-[rgba(123,102,255,0.15)] before:z-[-1] ${
               animate.animate.about > 150
@@ -92,7 +138,8 @@ function About(animate) {
           </div>
 
           {/* About-Image */}
-          <ParallaxBanner className="h-[100vh] hidden md:block">
+          <ParallaxBanner className="h-[100vh] hidden md:block z-[0]">
+            {/* Background-Image */}
             <ParallaxBannerLayer
               speed={-10}
               className="w-full h-full overflow-hidden"
@@ -104,12 +151,30 @@ function About(animate) {
                 className="w-full"
               />
             </ParallaxBannerLayer>
+
+            {/* Features-Carousel */}
+            <div
+              className={`absolute top-[18%] left-[20%] w-2/3 h-full bg-transparent duration-[1500ms] text-justify ${
+                animate.animate.about > 250
+                  ? "translate-x-0 opacity-1"
+                  : "translate-x-full opacity-0"
+              }`}
+            >
+              <Slider {...settings}>
+                {featureData.map((data, index) => (
+                  <div key={index} className="bg-white p-8 rounded-xl">
+                    <h1 className="text-4xl mb-4 text-center">{data.head}</h1>
+                    <p className="text-md">{data.description}</p>
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </ParallaxBanner>
         </div>
       </Parallax>
       <InfoBot animate={animate.animate} />
       <Testimonials animate={animate.animate} />
-    </div>
+    </>
   );
 }
 

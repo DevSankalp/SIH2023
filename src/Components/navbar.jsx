@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Navbar, Collapse } from "@material-tailwind/react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoCloseCircle } from "react-icons/io5";
+import { IoIosArrowBack } from "react-icons/io";
+import { FaRegUserCircle } from "react-icons/fa";
 import { auth } from "./../firebase";
 import { TbLogout } from "react-icons/tb";
-
 
 const Nav = ({ navbarData }) => {
   const [user, setUser] = useState(null);
@@ -22,9 +23,9 @@ const Nav = ({ navbarData }) => {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -66,7 +67,7 @@ const Nav = ({ navbarData }) => {
   );
 
   return (
-    <Navbar className="fixed top-0 md:relative z-10 h-max max-w-full py-2 px-4 lg:px-8 lg:py-4 text-black glassmorph bg-[rgba(255,255,255,.9)] rounded-none">
+    <Navbar className="fixed top-0 z-10 h-max max-w-full py-2 px-4 lg:px-8 lg:py-4 text-black glassmorph bg-[rgba(255,255,255,.9)] rounded-none">
       <div className="flex items-center justify-between pl-4 text-blue-gray-900">
         {/* Logo-text */}
         <div className="flex items-center gap-4">
@@ -89,73 +90,75 @@ const Nav = ({ navbarData }) => {
         {/* Nav-end */}
         <div className="flex items-center gap-4 p-2">
           {user ? (
-<>
-<div className="relative" ref={dropdownRef}>
-<button
-  id="dropdownDividerButton"
-  data-dropdown-toggle="dropdownDivider"
-  onClick={toggleDropdown}
-  className={`bg-gray-800 rounded-lg flex items-center p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class}`}
-  type="button"
->
-  Dropdown
-  <svg
-    className={`w-2.5 h-2.5 ms-1 transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 10 6"
-  >
-    <path
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="m1 1 4 4 4-4"
-    />
-  </svg>
-</button>
+            <>
+              <div className="relative" ref={dropdownRef}>
+                {/* Dropdown-button */}
+                <button
+                  id="dropdownDividerButton"
+                  data-dropdown-toggle="dropdownDivider"
+                  onClick={toggleDropdown}
+                  className={`flex items-center gap-1 text-[24px] hover:bg-[#ccc] duration-300 p-2 rounded-lg ${
+                    isDropdownOpen ? "bg-[#ccc]" : ""
+                  }`}
+                >
+                  <FaRegUserCircle />
+                  <IoIosArrowBack
+                    className={`w-4 h-4 duration-300 ${
+                      isDropdownOpen ? "rotate-[270deg]" : "rotate-90"
+                    }`}
+                  />
+                </button>
 
-{/* Dropdown menu */}
-{isDropdownOpen && (
-        <div
-          id="dropdownDivider"
-          className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
-        >
-          <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDividerButton">
-            <li>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                Settings
-              </a>
-            </li>
-          </ul>
-          <div className="py-2">
-      <a
-        onClick={() => auth.signOut()}
-        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-      >
-        Log Out<TbLogout className="ms-1"/>
-      </a>
-    </div>
-  </div>
-)}
-</div>
+                {/* Dropdown-menu */}
+                <div
+                  id="dropdownDivider"
+                  className={`flex flex-col items-center justify-center absolute z-10 bg-white w-32 shadow-[0_0_5px_rgba(0,0,0,0.2)] top-12 rounded-xl duration-300 overflow-hidden ${
+                    isDropdownOpen ? "h-[140px]" : "h-0"
+                  }`}
+                >
+                  <ul
+                    className="py-2 text-sm text-gray-700 "
+                    aria-labelledby="dropdownDividerButton"
+                  >
+                    <li>
+                      <a
+                        href="#"
+                        className="w-max block pt-2 relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[1.1px] before:scale-x-0 lg:hover:before:scale-x-100 before:origin-left before:duration-500"
+                      >
+                        Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="w-max block pt-2 relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[1.1px] before:scale-x-0 lg:hover:before:scale-x-100 before:origin-left before:duration-500"
+                      >
+                        Settings
+                      </a>
+                    </li>
+                  </ul>
+                  <div className="py-2">
+                    <button
+                      onClick={() => auth.signOut()}
+                      className="flex justify-center items-center w-full gap-2 px-4 py-2 text-[14px] text-gray-700 hover:bg-gray-200 cursor-pointer duration-300"
+                    >
+                      Log Out
+                      <TbLogout className="" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </>
           ) : (
             // If user is not logged in, display Log In button
             <a
               href="/Login"
-              className={`bg-gray-800 rounded-lg p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class}`}
+              className={`bg-gray-800 rounded-lg p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class} `}
             >
               Log In
             </a>
           )}
-          <button className="hidden lg:inline-block py-2 px-4 rounded-xl bg-black text-white hover:bg-white hover:text-black drop-shadow-md duration-500">
+          <button className="hidden lg:inline-block py-2 px-4 rounded-xl bg-black text-white hover:bg-white hover:text-black drop-shadow-md duration-300">
             <span>{buttonText}</span>
           </button>
 

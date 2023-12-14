@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Components/navbar";
 import ParticleSphere from "../Components/particleSphere";
+import { IoIosArrowBack } from "react-icons/io";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import {
@@ -129,7 +130,7 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
     <form
       className={`flex flex-col items-center md:justify-center h-full px-6 md:px-10 gap-2 ${background}`}
     >
-      <h1 className="font-bold text-4xl mb-4">
+      <h1 className="font-bold text-4xl mb-4 mt-12">
         {formType === "signIn" ? "Sign In" : "Create Account"}
       </h1>
       {formType === "signUp" ? (
@@ -181,51 +182,37 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
         </>
       )}
       {formType === "signIn" && (
-        <a
+        <span
           onClick={handleResetLinkClick}
-          className={`text-sm hover:underline hover:text-[#512da8] mt-4`}
+          className="text-sm hover:underline hover:text-[#512da8] mt-4 cursor-pointer"
         >
           Forgot Your Password?
-        </a>
+        </span>
       )}
       {showResetModal && (
-        <div className=" fixed flex items-center justify-center h-3/4 md:h-full mt-16 md:mt-0 px-10 md:px-10 gap-2 w-full inset-0 bg-opacity-50">
+        <div className=" fixed flex items-center justify-center h-3/4 md:h-full px-10 gap-2 w-full">
           <button
-            className={`absolute top-4 left-12 md:left-8 shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-4 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
+            className={`absolute top-4 left-14 md:left-4 shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl p-2 active:scale-[.98] bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}
             onClick={hideModal}
           >
-            {/* Back arrow icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
+            <IoIosArrowBack className="w-6 h-6" />
           </button>
-          <div className="bg-white p-8 md:mt-0 rounded-md max-w-md w-full h-full flex flex-col items-center md:justify-center">
-            <h2 className="font-bold text-4xl mb-4 mt-20 md:mt-0 text-center">
+          <div className="bg-white p-8 rounded-md max-w-md w-full h-full flex flex-col items-center md:justify-center gap-8">
+            <h2 className="font-bold text-4xl mt-20 md:mt-0 text-center">
               Reset Password
             </h2>
-            <form className="flex flex-col items-center md:justify-center">
+            <form className="flex flex-col items-center w-full">
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={emailForReset}
                 onChange={(e) => setEmailForReset(e.target.value)}
-                className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
+                className="bg-[#eee] focus-within:border-black border-2 mb-4 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
               />
               <button
                 type="submit"
                 onClick={(event) => handleResetSubmit(event, emailForReset)}
-                className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-8 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
+                className={`shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-6 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
               >
                 Send Reset Email
               </button>
@@ -256,11 +243,9 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
 
 const Login = () => {
   const [clicked, setClicked] = useState(false);
-
   const [formData, setFormData] = useState({});
 
   const handleSubmit = () => {};
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -295,7 +280,6 @@ const Login = () => {
     application: ["Templates", "Submitted", "Approved"],
     buttonText: "Get Approved",
     class: "hidden",
-    link: "/Login",
   };
 
   // Particles-Settings
@@ -312,9 +296,11 @@ const Login = () => {
   };
 
   return (
-    <div className={`flex flex-col items-center h-screen bg-[#f2ebfb]`}>
+    <div
+      className={`flex flex-col items-center justify-center h-screen bg-[#f2ebfb]`}
+    >
       {/* Particles */}
-      <div className="fixed -bottom-1/4">
+      <div className="fixed -bottom-full md:-bottom-1/4">
         <ParticleSphere
           width={settings.width}
           height={settings.height}
@@ -341,7 +327,7 @@ const Login = () => {
             formData={formData}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            background={`bg-white w-full justify-start mt-12`}
+            background={`bg-white w-full`}
           />
         </div>
         {introData.map((item, index) => (

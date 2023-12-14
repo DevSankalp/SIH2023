@@ -22,9 +22,9 @@ function Background() {
 
       {/* Layer2 */}
       <ParallaxBannerLayer
-        speed={30}
+        speed={10}
         className="md:h-max"
-        style={{ inset: "-200px 0" }}
+        style={{ inset: "-150px 0" }}
       >
         <img
           src="https://static.wixstatic.com/media/84770f_994ffe746a074d1f8a2ec9456a8bf1ff~mv2.png/v1/fill/w_1210,h_960,al_br,q_90,usm_0.66_1.00_0.01,enc_auto/84770f_994ffe746a074d1f8a2ec9456a8bf1ff~mv2.png"
