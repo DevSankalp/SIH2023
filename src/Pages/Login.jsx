@@ -302,9 +302,9 @@ const Login = () => {
   var screenSize = window.innerWidth;
   var screenSize1 = window.innerHeight;
   const settings = {
-    width: screenSize * 2.5,
-    height: screenSize1 * 2.5,
-    particleNumber: 800,
+    width: screenSize * 3.5,
+    height: screenSize1 * 3.5,
+    particleNumber: 1200,
     maxRadius: 4,
     minRadius: 1,
     angleZemul: 1000,
@@ -312,9 +312,9 @@ const Login = () => {
   };
 
   return (
-    <div className={`flex items-center justify-center h-screen bg-[#f2ebfb]`}>
+    <div className={`flex flex-col items-center h-screen bg-[#f2ebfb]`}>
       {/* Particles */}
-      <div className="fixed">
+      <div className="fixed -bottom-1/4">
         <ParticleSphere
           width={settings.width}
           height={settings.height}
