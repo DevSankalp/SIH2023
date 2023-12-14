@@ -6,6 +6,8 @@ import { BiSupport } from "react-icons/bi";
 import { TbReportSearch, TbLogout } from "react-icons/tb";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoCloseCircle, IoHomeOutline } from "react-icons/io5";
+import { auth } from "./../../firebase";
+
 
 const iconArr = [
   <IoHomeOutline />,
@@ -82,7 +84,7 @@ const Sidebar = ({ userData, navData }) => {
 
         {/* Logout-button */}
         <a
-          href="/"
+          onClick={() => auth.signOut()}
           className="flex items-center justify-center gap-6 cursor-pointer px-4 py-2 hover:bg-[#240046] hover:text-white rounded-lg duration-300 shadow-[0_0_5px_rgba(0,0,0,.2)] active:scale-[.98]"
         >
           <h1>LogOut</h1>
