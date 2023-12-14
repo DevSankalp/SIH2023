@@ -1,11 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Navbar, Collapse } from "@material-tailwind/react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoCloseCircle } from "react-icons/io5";
 import { auth } from "./../firebase";
+import { TbLogout } from "react-icons/tb";
+
 
 const Nav = ({ navbarData }) => {
   const [user, setUser] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     // This effect runs on component mount
@@ -68,13 +89,63 @@ const Nav = ({ navbarData }) => {
         {/* Nav-end */}
         <div className="flex items-center gap-4 p-2">
           {user ? (
-            // If user is logged in, display Log Out button
-            <button
-              className={`bg-gray-800 rounded-lg p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class}`}
-              onClick={() => auth.signOut()}
-            >
-              Log Out
-            </button>
+<>
+<div className="relative" ref={dropdownRef}>
+<button
+  id="dropdownDividerButton"
+  data-dropdown-toggle="dropdownDivider"
+  onClick={toggleDropdown}
+  className={`bg-gray-800 rounded-lg flex items-center p-1 px-4 md:rounded-none md:px-1 md:bg-transparent md:border-0 text-white md:text-black text-[16px] relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-[100%] before:h-[4%] lg:before:hover:scale-x-100 before:origin-left before:duration-500 before:scale-x-0 ${navbarData.class}`}
+  type="button"
+>
+  Dropdown
+  <svg
+    className={`w-2.5 h-2.5 ms-1 transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 10 6"
+  >
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="m1 1 4 4 4-4"
+    />
+  </svg>
+</button>
+
+{/* Dropdown menu */}
+{isDropdownOpen && (
+        <div
+          id="dropdownDivider"
+          className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+        >
+          <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDividerButton">
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                Settings
+              </a>
+            </li>
+          </ul>
+          <div className="py-2">
+      <a
+        onClick={() => auth.signOut()}
+        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+      >
+        Log Out<TbLogout className="ms-1"/>
+      </a>
+    </div>
+  </div>
+)}
+</div>
+            </>
           ) : (
             // If user is not logged in, display Log In button
             <a

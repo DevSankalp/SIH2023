@@ -189,9 +189,9 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
         </a>
       )}
       {showResetModal && (
-        <div className="fixed flex items-center justify-center h-full px-6 md:px-10 gap-2 z-100 inset-0 bg-opacity-50">
+        <div className=" fixed flex items-center justify-center h-3/4 md:h-full mt-16 md:mt-0 px-10 md:px-10 gap-2 w-full inset-0 bg-opacity-50">
           <button
-            className={`absolute top-4 left-8 shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-4 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
+            className={`absolute top-4 left-12 md:left-8 shadow-[0_0_5px_rgba(0,0,0,.5)] active:shadow-[inset_0_0_5px_rgba(0,0,0,.5)] rounded-xl py-2 px-4 mt-8 md:mt-4 active:scale-[.98] ${`bg-[#240046] text-white hover:bg-white hover:text-[#240046]`}`}
             onClick={hideModal}
           >
             {/* Back arrow icon */}
@@ -210,8 +210,8 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
               />
             </svg>
           </button>
-          <div className="bg-white p-8 rounded-md max-w-md w-full h-full flex flex-col items-center md:justify-center">
-            <h2 className="font-bold text-4xl mb-4 text-center">
+          <div className="bg-white p-8 md:mt-0 rounded-md max-w-md w-full h-full flex flex-col items-center md:justify-center">
+            <h2 className="font-bold text-4xl mb-4 mt-20 md:mt-0 text-center">
               Reset Password
             </h2>
             <form className="flex flex-col items-center md:justify-center">
