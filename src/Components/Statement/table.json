@@ -233,5 +233,181 @@
       }
     ]
   },
-  "table2.3": {}
+  "table2.3": {},
+  "table3.1": {
+    "headers": [
+      "S.No.",
+      "Type of Institution",
+      "Introduction(Rs. in Lakh)",
+      "Continuation(Rs. in Lakh)"
+    ],
+    "rows": [
+      {
+        "values": [
+          "1",
+          "Government/ Central/State Public University/ Institution set up in J&K/ Ladakh/North Eastern States/ Institution set up exclusively for Women/ PwBD",
+          "2.0",
+          "1.0"
+        ]
+      },
+      {
+        "values": [
+          "2",
+          "All other Institutions/Universities including Minority Institution/ Govt. Aided Institutions.",
+          "12.0",
+          "6.0"
+        ]
+      }
+    ]
+  },
+  "table4.1": {
+    "headers": ["S.No.", "Type of University", "TER Charges (Rs. in Lakh)"],
+    "rows": [
+      {
+        "values": [
+          "1",
+          "Government University / Institution Deemed to be University (Government) and University set up in J&K / Ladakh / North Eastern States / University set up exclusively for women",
+          "2.00"
+        ]
+      },
+      {
+        "values": [
+          "2",
+          "Institution Deemed to be University(Private)/State Private University",
+          "10.00"
+        ]
+      },
+      {
+        "values": [
+          "3",
+          "All Applicants under (i) and (ii) whose application was rejected and Final LoR was issued in the last Academic Year**",
+          {
+            "Category (i)": "1.00",
+            "Category (ii)": "4.00"
+          }
+        ]
+      }
+    ]
+  },
+  "table5.1": {},
+  "table5.2": {
+    "headers": ["S.No.", "Staff Requirements", "Number"],
+    "rows": [
+      {
+        "values": ["1", "Assistant Professor (Coordinator)", "1"]
+      },
+      {
+        "values": ["2", "Counsellor per Theory Course of 4 Credits", "2"]
+      },
+      {
+        "values": ["3", "Supervisor per Practical Course of 2 Credits", "1"]
+      },
+      {
+        "values": ["4", "Computer Operator", "1"]
+      }
+    ]
+  },
+  "table5.3": {
+    "headers": [
+      "S.No.",
+      "Type of Built-up Area",
+      "Percentage (%)",
+      "Headquarters in Sq m",
+      "Learner Support Centre in Sq m"
+    ],
+    "rows": [
+      {
+        "values": ["1", "Academic Area", "50", "750", "66"]
+      },
+      {
+        "values": ["2", "Administrative Area", "10", "150", "33"]
+      },
+      {
+        "values": [
+          "3",
+          "Academic support such as Library,Reading Room, Computer Centre, Informational and Communication Technology Laboratories, Video and Audio Laboratories, etc.",
+          "30",
+          "450",
+          "150"
+        ]
+      },
+      {
+        "values": [
+          "4",
+          "Amenities or other support facilities Area",
+          "10",
+          "150",
+          "66"
+        ]
+      },
+      {
+        "values": [
+          "5",
+          "Minimum Built-up area for Open and Distance Learning activity",
+          "1500",
+          "150",
+          "150"
+        ]
+      }
+    ]
+  },
+  "table5.4": {},
+  "table5.5": {
+    "headers": [
+      "S.No.",
+      "Standalone Institutions/Institution Deemed to be University/University",
+      "TER Charges for ODL (Rs. in Lakh)",
+      "TER Charges for OL (Rs. in Lakh)"
+    ],
+    "rows": [
+      {
+        "values": [
+          "1",
+          "New application for the conduct of Open and Distance Learning Courses from Standalone Institution/Institution Deemed to be University (Headquarters and upto 2 Learner Support Centres for the total Intake upto 5000)",
+          "10.00",
+          "10.00"
+        ]
+      },
+      {
+        "values": [
+          "2",
+          "New application by the existing AICTE approved Institution running either ODL or OL Courses",
+          "1.25",
+          "1.25"
+        ]
+      },
+      {
+        "values": [
+          "3",
+          "Each additional Learner Support Centre (Intake upto 1000)",
+          "3.50",
+          "Not Applicable"
+        ]
+      },
+      {
+        "values": [
+          "4",
+          "Extension of Approval (Intake upto 1000)",
+          "2.00",
+          "2.00"
+        ]
+      },
+      {
+        "values": [
+          "5",
+          "Introduction of New Course/Increase in approved Intake in the courses (for every 1000 Seats in learner support centre) or headquarters.",
+          "2.50",
+          "2.50"
+        ]
+      },
+      {
+        "values": [
+          "6",
+          "Closure of Course(s)/Reduction in Intake/Change in the Name of the Course(s)",
+          "0.25 for each Learner Support Centre/Headquarters",
+          "0.25"
+        ]
+      }
+    ]
+  }
 }
