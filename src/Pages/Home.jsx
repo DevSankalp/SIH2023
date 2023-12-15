@@ -31,7 +31,7 @@ function Home() {
       navItems: [
         { text: "Dashboard", link: "/Dashboard" },
         { text: "Application", link: "/" },
-        { text: "Fee Statement", link: "/" },
+        { text: "Fee Statement", link: "/Statement" },
         { text: "Stats", link: "/" },
       ],
       info: [
