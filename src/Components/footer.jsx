@@ -32,7 +32,7 @@ function Footer({ data }) {
   const { navItems, info } = data;
 
   return (
-    <footer className="flex flex-col items-center py-8 md:pt-12 md:pb-4 bg-white">
+    <footer className="flex flex-col items-center py-8 md:pt-12 md:pb-4 bg-white relative z-[1]">
       <div className="w-[90%] flex flex-col gap-6 sm:gap-0 sm:flex-row items-center sm:items-start justify-between border-y-[1px] border-[rgba(0,0,0,.5)] p-8 md:p-16 md:pb-24">
         {/* Logo */}
         <a href="/" className="text-3xl font-bold">

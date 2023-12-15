@@ -9,7 +9,7 @@ function Background() {
     >
       {/* Layer1 */}
       <ParallaxBannerLayer
-        speed={-30}
+        speed={30}
         className="md:h-max"
         style={{ inset: "-200px 0" }}
       >
@@ -22,7 +22,7 @@ function Background() {
 
       {/* Layer2 */}
       <ParallaxBannerLayer
-        speed={-10}
+        speed={10}
         className="md:h-max"
         style={{ inset: "-150px 0" }}
       >
