@@ -1,0 +1,237 @@
+{
+  "table1.1": {
+    "headers": ["S.No.", "Type of Institution", "TER Charges (Rs. in Lakh)"],
+    "rows": [
+      {
+        "values": [
+          "1",
+          "Government/Institution setup in J&K / Leh & Ladakh / North Eastern states/PwBD / Institution setup exclusively for women",
+          "1.00"
+        ]
+      },
+      {
+        "values": [
+          "2",
+          "All other Institutions (including Minority & Government-Aided Institution)",
+          "10.00"
+        ]
+      },
+      {
+        "values": [
+          "3",
+          "All Applicants under (i) and (ii) whose applications were rejected and issued Final LoR in the previous academic AY 2023-24**",
+          { "Govt": "0.25", "Other": "1.00" }
+        ]
+      }
+    ]
+  },
+  "table1.2": {
+    "headers": [
+      "S.No.",
+      "Programme proposed(Diploma/ Post Diploma/ Under Graduate Degree/ Post Graduate Diploma/ Post Graduate Degree)",
+      "Total minimum funds required as proof of Operational Expenses at the time of Scrutiny in the Name of the Trust/ Society/ Company (Rs. in Lakhs)"
+    ],
+    "rows": [
+      {
+        "values": ["1", "Engineering and Technology", "100"]
+      },
+      {
+        "values": ["2", "Planning", "50"]
+      },
+      {
+        "values": ["3", "Applied Arts and Crafts", "50"]
+      },
+      {
+        "values": ["4", "Design", "50"]
+      },
+      {
+        "values": ["5", "Hotel Management and Catering Technology", "50"]
+      },
+      {
+        "values": ["6", "Computer Applications", "50"]
+      },
+      {
+        "values": ["7", "Management", "50"]
+      }
+    ]
+  },
+  "table1.3": {},
+  "table1.4": {
+    "headers": [
+      "S.No.",
+      "Programme",
+      "Diploma/ Post Diploma",
+      "Under Graduate",
+      "Post Graduate Diploma/ Post Graduate Degree"
+    ],
+    "rows": [
+      {
+        "values": ["1", "Engineering and Technology", "15", "35", "15"]
+      },
+      {
+        "values": ["2", "Planning", "15", "15", "15"]
+      },
+      {
+        "values": ["3", "Applied Arts and Crafts", "15", "15", "15"]
+      },
+      {
+        "values": ["4", "Design", "15", "15", "15"]
+      },
+      {
+        "values": [
+          "5",
+          "Hotel Management and Catering Technology(HMCT)",
+          "15",
+          "15",
+          "15"
+        ]
+      },
+      {
+        "values": [
+          "6",
+          "Computer Applications(viz.BCA, MCA, etc.)",
+          "-",
+          "5",
+          "15"
+        ]
+      },
+      {
+        "values": ["7", "Management(viz.BBA,MBA, etc.)", "-", "5", "15"]
+      }
+    ]
+  },
+  "table2.2.1": {
+    "headers": ["Particulars (Category -1)", "Processing Period"],
+    "rows": [
+      {
+        "values": [
+          "Extension of Approval based on Self-Disclosure",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Introduction/ Continuation of seats for Non Resident Indian(s)",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Conversion of Diploma Level into Degree Level and vice-versa",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Change in the Name of the Institution or affiliating University/ Board or Type of Institution (except Institution(s) converted into a University)",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "To start new Programme/ Level in the existing Institutions",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Merger of Institutions under the Same /Different Trust/ Society/ Company operating in the same Campus / City",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Extension of Approval of the existing Institutions after a break in the preceding Academic Year/ Restoration of Intake",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Introduction/Continuation of supernumerary seats for Foreign Nationals/ Overseas Citizen of India (OCI)/ Children of Indian Workers in Gulf Countries.",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Increase in Intake/ Additional Course(s)",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Introduction of Integrated/Dual Degree Course",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": ["Introduction of Off-Campus", "As per Public Notice Period"]
+      },
+      {
+        "values": [
+          "Introduction/ Continuation of Fellow Programme in Management",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Change in the Name of the Course/Merger of the Courses/ Reduction in Intake",
+          "As per Public Notice Period"
+        ]
+      },
+      {
+        "values": [
+          "Introduction/ Continuation of Collaboration and Twinning Programme",
+          "As per Public Notice Period"
+        ]
+      }
+    ]
+  },
+  "table2.2.2": {
+    "headers": ["Particulars (Category - 2)", "Processing Period"],
+    "rows": [
+      {
+        "values": ["Change of Site / Location", "Year round"]
+      },
+      {
+        "values": ["Change of Site / Location", "Year round"]
+      },
+      {
+        "values": ["Closure of the Institution", "Year round"]
+      },
+      {
+        "values": [
+          "Conversion of Women's Institution into Co-ed Institution and vice-versa",
+          "Year round"
+        ]
+      },
+      {
+        "values": ["Closure of Programme(s)/ Course(s)", "Year round"]
+      },
+      {
+        "values": ["Change in the Bank Details", "Year round"]
+      },
+      {
+        "values": [
+          "Change in the Name of the Trust/Society/Company",
+          "Year round"
+        ]
+      },
+      {
+        "values": ["Extended EoA", "Year round"]
+      },
+      {
+        "values": [
+          "Type of Institution (Institution(s) converted into a Deemed-to-be-University)",
+          "Year round"
+        ]
+      },
+      {
+        "values": [
+          "Online Learning/Open and Distandce Learning courses",
+          "Year round (Processing will be twice a year as per UGC timeline)"
+        ]
+      }
+    ]
+  },
+  "table2.3": {}
+}

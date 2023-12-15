@@ -5,7 +5,6 @@ import Home from "./Pages/Home";
 import Dashboard from "./Pages/Dashboard";
 import Statement from "./Pages/Statement";
 import Login from "./Pages/Login";
-import Stats from "./Pages/stats";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
 
@@ -28,7 +27,6 @@ function App() {
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Statement" element={<Statement />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/Stats" element={<Stats />} />
         </Routes>
       </Router>
     </ParallaxProvider>
