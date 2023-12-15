@@ -238,8 +238,8 @@
     "headers": [
       "S.No.",
       "Type of Institution",
-      "Introduction(Rs. in Lakh)",
-      "Continuation(Rs. in Lakh)"
+      "Introduction (Rs. in Lakh)",
+      "Continuation (Rs. in Lakh)"
     ],
     "rows": [
       {

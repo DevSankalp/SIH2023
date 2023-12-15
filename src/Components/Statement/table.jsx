@@ -25,10 +25,10 @@ function RenderTable({ tableKey }) {
       key={tableKey}
       className="w-4/5 rounded-xl overflow-hidden shadow-[0_0_7px_rgba(0,0,0,0.3)]"
     >
-      <thead className="bg-[#B77AFD] rounded-t-xl">
+      <thead className="bg-[#B77AFD]">
         <tr>
           {table.headers.map((header, index) => (
-            <th key={index} className="border p-4">
+            <th key={index} className="border p-4 font-thin">
               {header}
             </th>
           ))}
@@ -38,7 +38,12 @@ function RenderTable({ tableKey }) {
         {table.rows.map((row, rowIndex) => (
           <tr key={rowIndex} className="py-5">
             {row.values.map((value, colIndex) => (
-              <td key={colIndex} className="border p-4">
+              <td
+                key={colIndex}
+                className={`border p-4 ${
+                  table.headers[colIndex] === "S.No." ? "text-center" : ""
+                }`}
+              >
                 {typeof value === "object" ? renderCellValue(value) : value}
               </td>
             ))}
