@@ -57,7 +57,6 @@ function Home() {
         { text: "Dashboard", link: "/Dashboard" },
         { text: "Application", link: "/Application" },
         { text: "Fee Statement", link: "/Statement" },
-        { text: "Stats", link: "/Stats" },
         // Add more navigation items as needed
       ],
       application: ["Templates", "Submitted", "Approved"],

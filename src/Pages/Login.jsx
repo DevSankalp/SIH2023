@@ -274,7 +274,6 @@ const Login = () => {
       { text: "Dashboard", link: "/Dashboard" },
       { text: "Application", link: "/" },
       { text: "Fee Statement", link: "/" },
-      { text: "Stats", link: "/" },
       // Add more navigation items as needed
     ],
     application: ["Templates", "Submitted", "Approved"],
