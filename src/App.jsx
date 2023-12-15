@@ -3,6 +3,7 @@ import "./App.css";
 import Lenis from "@studio-freight/lenis";
 import Home from "./Pages/Home";
 import Dashboard from "./Pages/Dashboard";
+import Statement from "./Pages/Statement";
 import Login from "./Pages/Login";
 import Stats from "./Pages/stats";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/SIH2023" element={<Home />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Statement" element={<Statement />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Stats" element={<Stats />} />
         </Routes>
