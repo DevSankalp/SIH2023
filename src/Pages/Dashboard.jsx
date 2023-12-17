@@ -12,16 +12,16 @@ function Dashboard() {
     },
     navData: {
       items: [
-        { title: "Home", link: "/" },
+        { title: "Home", link: "/Home" },
         { title: "Dashboard", active: true },
-        { title: "Statement", link: "/" },
+        { title: "Statement", link: "/Statement" },
       ],
     },
   };
 
   return (
     <div className="Dashboard md:h-[100vh] flex flex-col items-end bg-transparent">
-      {/* <Background /> */}
+      <Background />
       <div className="grid md:grid-cols-[20%_80%] h-full w-full bg-transparent">
         <Sidebar
           userData={dashBoardData.userData}

@@ -15,7 +15,7 @@ function Contact({ animate }) {
       ></div>
       <div
         className={`p-8 rounded-xl md:w-2/5 h-max duration-500 bg-white ${
-          animate.contact > 248
+          animate.contact > 186
             ? "shadow-[0_0_50px_rgba(0,0,0,.4)] translate-y-0 opacity-1"
             : "translate-y-1/4 shadow-none opacity-0"
         }`}

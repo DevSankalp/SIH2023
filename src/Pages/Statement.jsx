@@ -5,8 +5,8 @@ import Nav from "../Components/navbar";
 function Statement() {
   const navbarData = {
     pages: [
-      { text: "Home", link: "/", active: true },
-      { text: "Fee Statement", link: "/Statement" },
+      { text: "Home", link: "/" },
+      { text: "Fee Statement", active: true },
     ],
     components: [],
     loggedNav: [

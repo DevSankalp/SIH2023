@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import logo from "../Assets/logo.png";
-import { LuBookMinus, LuLayoutDashboard } from "react-icons/lu";
+import { LuLayoutDashboard } from "react-icons/lu";
 import { LiaMoneyCheckAltSolid } from "react-icons/lia";
-import { BiSupport } from "react-icons/bi";
-import { TbReportSearch, TbLogout } from "react-icons/tb";
+import { TbLogout } from "react-icons/tb";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoCloseCircle, IoHomeOutline } from "react-icons/io5";
 import { auth } from "./../../firebase";
 
 const iconArr = [
-  <IoHomeOutline />,
-  <LuLayoutDashboard />,
-  <LiaMoneyCheckAltSolid />,
-  <LuBookMinus />,
-  <BiSupport />,
-  <TbReportSearch />,
+  <IoHomeOutline className="w-5 h-5" />,
+  <LuLayoutDashboard className="w-5 h-5" />,
+  <LiaMoneyCheckAltSolid className="w-5 h-5" />,
 ];
 
 const Sidebar = ({ userData, navData }) => {
@@ -87,8 +83,8 @@ const Sidebar = ({ userData, navData }) => {
                 href={item.link}
                 className={`w-max p-2 shadow-[0_0_5px_rgba(0,0,0,.2)] rounded-md duration-300 ${
                   item.active
-                    ? "active:shadow-[0_0_5px_rgba(0,0,0,.2)] bg-[#240046] text-white"
-                    : "active:shadow-[inset_0_0_5px_rgba(0,0,0,.2)] hover:bg-[#240046]"
+                    ? "bg-[#240046] text-white"
+                    : "hover:bg-[#240046] hover:text-white active:scale-[.9]"
                 }`}
               >
                 {iconArr[index]}

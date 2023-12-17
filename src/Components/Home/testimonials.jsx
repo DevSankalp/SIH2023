@@ -43,7 +43,7 @@ function Testimonials({ animate }) {
   };
 
   return (
-    <div className="relative bg-white z-[0] flex flex-col items-center md:h-[90vh]">
+    <div className="relative bg-white z-[0] flex flex-col items-center md:h-full">
       <div
         className={`absolute w-full h-2/3 bg-[#8E8FFA] top-0 left-0 duration-1000 ${
           animate.testimonial > 150 ? "translate-x-0" : "-translate-x-full"
