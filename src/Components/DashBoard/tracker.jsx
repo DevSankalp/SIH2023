@@ -1,43 +1,14 @@
-import React from "react";
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { auth } from '../../firebase';
+import React, { useState, useEffect } from "react";
 
-function Tracker() {
-  const location = useLocation();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in.
-        setUser(user);
-      } else {
-        // No user is signed in.
-        setUser(null);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+const Tracker = () => {
   return (
-    <div className="glassmorph p-4 rounded-xl shadow-[0_0_5px_rgba(0,0,0,.2)] md:mb-8 sticky top-0 md:static">
-      <h1 className="text-3xl font-bold mb-4">Welcome to the Dashboard</h1>
-      {user && (
-        <div>
-          <p className="text-lg">
-            <span className="font-bold">Display Name:</span> {user.displayName}
-          </p>
-          <p className="text-lg">
-            <span className="font-bold">Email:</span> {user.email}
-          </p>
-          {/* You can display other user information here */}
-        </div>
-      )}
+    <div className="flex items-center justify-center w-full h-full z-[0]">
+      {/* <div className="w-max h-full flex items-center justify-center">
+        <div className="w-24 h-24 border-8 border-blue-500 rounded-full bg-black"></div>
+        <div className="border-8 border-blue-500 w-32 h-12 bg-blue-500"></div>
+      </div> */}
     </div>
   );
-}
+};
 
 export default Tracker;

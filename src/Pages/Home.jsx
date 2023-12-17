@@ -3,12 +3,21 @@ import Nav from "../Components/navbar";
 import Background from "../Components/Home/homeBackground";
 import Hero from "../Components/Home/hero";
 import About from "../Components/Home/about";
-import Footer from "../Components/footer";
 import ChatBot from "../Components/chatBot";
+import Contact from "../Components/Home/contact";
+import Footer from "../Components/footer";
+import { IoIosArrowDropup } from "react-icons/io";
 
 function Home() {
   // visibility-controller
-  const elemArr = ["motto", "about", "chat", "chatInfo", "testimonial"];
+  const elemArr = [
+    "motto",
+    "about",
+    "chat",
+    "chatInfo",
+    "testimonial",
+    "contact",
+  ];
   const initialState = elemArr.reduce((key, elementId) => {
     key[elementId] = 0;
     return key;
@@ -52,14 +61,20 @@ function Home() {
 
   const siteData = {
     navbarData: {
-      navItems: [
-        { text: "Home", active: true },
+      pages: [
+        { text: "Home", link: "/", active: true },
+        { text: "Fee Statement", link: "/Statement" },
+      ],
+      components: [
+        { text: "About", position: 700 },
+        { text: "ChatBot", position: 1200 },
+        { text: "Testimonials", position: 1800 },
+        { text: "Contact", position: 2500 },
+      ],
+      loggedNav: [
         { text: "Dashboard", link: "/Dashboard" },
         { text: "Application", link: "/Application" },
-        { text: "Fee Statement", link: "/Statement" },
-        // Add more navigation items as needed
       ],
-      application: ["Templates", "Submitted", "Approved"],
       buttonText: "Get Approved",
     },
     heroData: {
@@ -88,8 +103,19 @@ function Home() {
       <Background />
       <Hero data={siteData.heroData} />
       <About animate={inViewport} />
-      <Footer data={siteData.footerData} />
+      <Contact animate={inViewport} />
       <ChatBot />
+      <Footer data={siteData.footerData} />
+
+      {/* Scroll-Top-Button */}
+      <button
+        className={`flex items-center justify-center fixed bottom-8 right-4 bg-blue-700 text-white shadow-[0_0_5px_rgba(0,0,0,.4)] hover:bg-white hover:text-black w-10 h-10 rounded-xl z-20 transition-transform duration-500 ${
+          window.scrollY > 700 ? "translate-x-0" : "translate-x-[60px]"
+        }`}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <IoIosArrowDropup className="w-2/3 h-2/3" />
+      </button>
     </div>
   );
 }

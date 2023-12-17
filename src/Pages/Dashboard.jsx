@@ -15,16 +15,13 @@ function Dashboard() {
         { title: "Home", link: "/" },
         { title: "Dashboard", active: true },
         { title: "Statement", link: "/" },
-        { title: "Handbook", link: "/" },
-        { title: "Support", link: "/" },
-        { title: "Report", link: "/" },
       ],
     },
   };
 
   return (
     <div className="Dashboard md:h-[100vh] flex flex-col items-end bg-transparent">
-      <Background />
+      {/* <Background /> */}
       <div className="grid md:grid-cols-[20%_80%] h-full w-full bg-transparent">
         <Sidebar
           userData={dashBoardData.userData}

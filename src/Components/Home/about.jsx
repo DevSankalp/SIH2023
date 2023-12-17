@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function About(animate) {
+function About({ animate }) {
   const [font, setFont] = useState(1);
 
   // text-size-controller
@@ -82,7 +82,7 @@ function About(animate) {
         >
           <div
             className={`w-full h-full flex flex-col items-center justify-center duration-[1500ms] ${
-              animate.animate.motto > 100
+              animate.motto > 100
                 ? "translate-x-0 opacity-1"
                 : "-translate-x-1/4 opacity-0"
             }`}
@@ -103,7 +103,7 @@ function About(animate) {
           {/* About-Us */}
           <div
             className={`flex flex-col items-center justify-start pt-8 duration-[1500ms] relative before:absolute md:before:w-2/3 before:h-1/3 before:left-0 before:bottom-1/3 before:bg-[rgba(123,102,255,0.15)] before:z-[-1] ${
-              animate.animate.about > 150
+              animate.about > 150
                 ? "translate-y-0 opacity-1"
                 : "translate-y-1/4 opacity-0"
             }`}
@@ -155,7 +155,7 @@ function About(animate) {
             {/* Features-Carousel */}
             <div
               className={`absolute top-[18%] left-[20%] w-2/3 h-full bg-transparent duration-[1500ms] text-justify ${
-                animate.animate.about > 250
+                animate.about > 250
                   ? "translate-x-0 opacity-1"
                   : "translate-x-full opacity-0"
               }`}
@@ -172,8 +172,8 @@ function About(animate) {
           </ParallaxBanner>
         </div>
       </Parallax>
-      <InfoBot animate={animate.animate} />
-      <Testimonials animate={animate.animate} />
+      <InfoBot animate={animate} />
+      <Testimonials animate={animate} />
     </>
   );
 }

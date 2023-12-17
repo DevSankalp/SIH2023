@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../Components/navbar";
+import Nav from "../Components/navbar";
 import ParticleSphere from "../Components/particleSphere";
 import { IoIosArrowBack } from "react-icons/io";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -12,7 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const AuthForm = ({ formType, handleSubmit, background }) => {
+const AuthForm = ({ formType, background }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -150,6 +150,7 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             name="email"
+            required
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
           <input
@@ -158,6 +159,7 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             name="password"
+            required
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
         </>
@@ -169,6 +171,7 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             name="email"
+            required
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
           <input
@@ -177,6 +180,7 @@ const AuthForm = ({ formType, handleSubmit, background }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             name="password"
+            required
             className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500"
           />
         </>
@@ -268,15 +272,11 @@ const Login = () => {
   ];
 
   const navbarData = {
-    logoText: "FusionX",
-    navItems: [
+    pages: [
       { text: "Home", link: "/" },
-      { text: "Dashboard", link: "/Dashboard" },
-      { text: "Application", link: "/" },
-      { text: "Fee Statement", link: "/" },
-      // Add more navigation items as needed
+      { text: "Fee Statement", link: "/Statement" },
     ],
-    application: ["Templates", "Submitted", "Approved"],
+    components: [],
     buttonText: "Get Approved",
     class: "hidden",
   };
@@ -310,7 +310,7 @@ const Login = () => {
           zAngleDemul={settings.zAngleDemul}
         />
       </div>
-      <Navbar navbarData={navbarData} />
+      <Nav navbarData={navbarData} />
       <div
         className={`flex flex-col md:flex-row items-center w-5/6 md:w-2/3 max-w-full h-3/4 mt-16 relative overflow-hidden rounded-xl bg-white md:bg-white shadow-[0_5px_15px_rgba(0,0,0,0.35)]`}
         id="container"

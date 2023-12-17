@@ -3,25 +3,28 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Testimonials(animate) {
+function Testimonials({ animate }) {
   const testimonials = [
     {
-      quote: `"FusionX was instrumental in helping us secure funding"`,
+      quote: `FusionX was instrumental in helping us secure funding`,
       content:
         "The team at FusionX provided us with the guidance and support we needed to secure funding for our startup. Their expertise and network of investors were invaluable.",
-      author: "demo person",
+      author: "Random Banda",
+      description: "Random Content",
     },
     {
-      quote: `"FusionX provided us with access to a range of resources and mentors"`,
+      quote: `FusionX provided us with access to a range of resources and mentors`,
       content:
         "FusionX was instrumental in helping us grow and scale our startup. Their platform provided us with access to a range of resources and mentors that helped us navigate the challenges of entrepreneurship.",
-      author: "demo person",
+      author: "Random Banda",
+      description: "Random Content",
     },
     {
-      quote: `"FusionX helped us connect with other startups and industry experts"`,
+      quote: `FusionX helped us connect with other startups and industry experts`,
       content:
         "The networking opportunities provided by FusionX were invaluable. We were able to connect with other startups and industry experts, which helped us learn and grow.",
-      author: "demo person",
+      author: "Random Banda",
+      description: "Random Content",
     },
   ];
 
@@ -40,45 +43,56 @@ function Testimonials(animate) {
   };
 
   return (
-    <section className="relative bg-white z-[0] flex flex-col items-center py-12 shadow-[inset_0_0_5px_rgba(0,0,0,.4)]">
+    <div className="relative bg-white z-[0] flex flex-col items-center md:h-[90vh]">
       <div
-        className={`w-4/5 flex-col md:flex-row flex items-center rounded-xl bg-[rgba(123,106,255,.6)] p-8 duration-[1500ms] ${
-          animate.animate.testimonial > 100
-            ? "translate-y-0 opacity-1"
-            : "translate-y-1/4 opacity-0"
+        className={`absolute w-full h-2/3 bg-[#8E8FFA] top-0 left-0 duration-1000 ${
+          animate.testimonial > 150 ? "translate-x-0" : "-translate-x-full"
+        }`}
+      ></div>
+      <div
+        className={`w-full md:w-4/5 flex flex-col items-center rounded-xl duration-1000 gap-12 scale-[.9] ${
+          animate.testimonial > 150
+            ? "translate-x-0 opacity-1"
+            : "-translate-x-1/4 opacity-0"
         }`}
         id="testimonial"
       >
-        <div className="flex flex-col justify-center text-center md:text-start md:gap-4 text-white md:w-1/2">
-          <h1 className="text-xl md:text-4xl">Our Clients</h1>
-          <h1 className="text-2xl md:text-5xl">Why choose FusionX ?</h1>
+        <div className="flex flex-col items-center md:text-start md:gap-4 font-bold text-white">
+          <h1 className="text-2xl md:text-4xl">Our Clients</h1>
+          <h1 className="text-3xl md:text-5xl">Why choose FusionX ?</h1>
         </div>
 
         {/* FeedBacks */}
-        <div className="bg-[rgba(255,255,255,.7)] w-full md:w-1/2 mt-8 md:m-0 px-14 py-8 rounded-xl md:text-start">
+        <div className="w-full md:w-[60%] p-8 rounded-xl bg-[rgba(36,0,70,.8)] shadow-[0_0_5px_#000] text-white text-thin">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (
               <div key={index}>
-                <h1 className="text-md md:text-2xl md:underline text-center">
-                  {testimonial.quote}
-                </h1>
-                <p className="text-lg text-justify my-8 hidden md:block">
-                  {testimonial.content}
-                </p>
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-4 md:m-0">
-                  {/* <img
-                    src={image[index]}
-                    alt={testimonial.author}
-                    className="rounded-full"
-                  /> */}
-                  <p className="text-sm">{testimonial.author}</p>
+                <div className="grid grid-cols-2 grid-rows-2 mb-8 bg-[rgba(255,255,255,.5)] p-8 rounded-xl gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    className="w-48 h-48 object-cover rounded-full row-span-2 justify-self-end"
+                  />
+                  <p className="text-xl text-center font-bold text-black self-end justify-self-center">
+                    {testimonial.author}
+                  </p>
+                  <p className="text-lg font-thin text-black self-start justify-self-center">
+                    {testimonial.description}
+                  </p>
+                </div>
+                <div>
+                  <h1 className="text-md md:text-2xl md:underline text-center">
+                    {testimonial.quote}
+                  </h1>
+                  <p className="text-sm md:text-lg text-justify mt-4 md:m-0 md:p-8">
+                    {testimonial.content}
+                  </p>
                 </div>
               </div>
             ))}
           </Slider>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
