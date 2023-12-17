@@ -1,104 +1,35 @@
-import React, { useState, useEffect } from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCol,
-  MDBContainer,
-  MDBIcon,
-  MDBRow,
-  MDBTypography,
-} from "mdb-react-ui-kit";
+import { useState } from "react";
 
 const Tracker = () => {
+  const [getPlace, setGetPlace] = useState(0);
+  const handleClick = (i) => {
+    setGetPlace(i);
+  };
   return (
     <div className="z-[0]">
-      <section className="vh-100">
-        <MDBContainer className="py-5 h-100">
-          <MDBRow className="justify-content-center align-items-center h-100">
-            <MDBCol size="12">
-              <MDBCard
-                className="card-stepper text-black"
-                style={{ borderRadius: "16px" }}
+      <section className="h-[200px] flex justify-center items-center m-3">
+        <div className="flex justify-center items-center">
+          {[0, 1, 2, 3, 4, 5, 6]?.map((item) => {
+            return (
+              <div
+                key={item}
+                onClick={() => {
+                  if (item % 2 === 0) handleClick(item);
+                }}
+                className={
+                  item % 2 === 0
+                    ? "flex justify-center items-center bg-black rounded-full w-[50px] h-[50px] text-white"
+                    : "w-[100px] h-[10px] bg-[black]"
+                }
+                style={{
+                  backgroundColor: item <= getPlace ? "blue" : "black",
+                }}
               >
-                <MDBCardBody className="p-5">
-                  <div className="d-flex justify-content-between align-items-center mb-5">
-                    <div>
-                      <MDBTypography tag="h5" className="mb-0">
-                        INVOICE{" "}
-                        <span className="text-primary font-weight-bold">
-                          #Y34XDHR
-                        </span>
-                      </MDBTypography>
-                    </div>
-                    <div className="text-end">
-                      <p className="mb-0">
-                        Expected Arrival <span>01/12/19</span>
-                      </p>
-                      <p className="mb-0">
-                        USPS{" "}
-                        <span className="font-weight-bold">
-                          234094567242423422898
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <ul
-                    id="progressbar-2"
-                    className="d-flex justify-content-between mx-0 mt-0 mb-5 px-0 pt-0 pb-2"
-                  >
-                    <li className="step0 active text-center" id="step1"></li>
-                    <li className="step0 active text-center" id="step2"></li>
-                    <li className="step0 active text-center" id="step3"></li>
-                    <li className="step0 text-muted text-end" id="step4"></li>
-                  </ul>
-
-                  <div className="d-flex justify-content-between">
-                    <div className="d-lg-flex align-items-center">
-                      <MDBIcon
-                        fas
-                        icon="clipboard-list me-lg-4 mb-3 mb-lg-0"
-                        size="3x"
-                      />
-                      <div>
-                        <p className="fw-bold mb-1">Order</p>
-                        <p className="fw-bold mb-0">Processed</p>
-                      </div>
-                    </div>
-                    <div className="d-lg-flex align-items-center">
-                      <MDBIcon
-                        fas
-                        icon="box-open me-lg-4 mb-3 mb-lg-0"
-                        size="3x"
-                      />
-                      <div>
-                        <p className="fw-bold mb-1">Order</p>
-                        <p className="fw-bold mb-0">Shipped</p>
-                      </div>
-                    </div>
-                    <div className="d-lg-flex align-items-center">
-                      <MDBIcon
-                        fas
-                        icon="shipping-fast me-lg-4 mb-3 mb-lg-0"
-                        size="3x"
-                      />
-                      <div>
-                        <p className="fw-bold mb-1">Order</p>
-                        <p className="fw-bold mb-0">En Route</p>
-                      </div>
-                    </div>
-                    <div className="d-lg-flex align-items-center">
-                      <MDBIcon fas icon="home me-lg-4 mb-3 mb-lg-0" size="3x" />
-                      <div>
-                        <p className="fw-bold mb-1">Order</p>
-                        <p className="fw-bold mb-0">Arrived</p>
-                      </div>
-                    </div>
-                  </div>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
+                {item % 2 === 0 ? (item / 2) + 1 : ""}
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
