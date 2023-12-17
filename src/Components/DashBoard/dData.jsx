@@ -1,4 +1,3 @@
-import React from "react";
 import Tracker from "./tracker";
 import Slider from "react-slick";
 import ChapterData from "./chapters.json";
