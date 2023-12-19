@@ -23,7 +23,9 @@ function RenderTable({ tableKey }) {
   return (
     <table
       key={tableKey}
-      className="w-4/5 rounded-xl overflow-hidden shadow-[0_0_7px_rgba(0,0,0,0.3)]"
+      className={`md:w-4/5 rounded-xl overflow-hidden shadow-[0_0_7px_rgba(0,0,0,0.3)] ${
+        tableKey.length.headers > 3 ? "scale-[.9]" : ""
+      }`}
     >
       <thead className="bg-[#B77AFD]">
         <tr>
@@ -56,7 +58,7 @@ function RenderTable({ tableKey }) {
 
 function Table() {
   return (
-    <div className="flex flex-col items-center justify-center my-8 gap-8">
+    <div className="flex flex-col items-center justify-center my-8 gap-8 mt-24 w-full">
       {Object.keys(tableData).map((tableKey) => (
         <RenderTable key={tableKey} tableKey={tableKey} />
       ))}

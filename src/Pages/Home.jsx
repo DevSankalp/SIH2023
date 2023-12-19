@@ -78,9 +78,9 @@ function Home() {
       buttonText: "Get Approved",
     },
     heroData: {
-      title: ["Unleash the Power of Innovation!!"],
+      title: ["AI-Based Assistive Approval Portal"],
       description:
-        "Ready to revolutionize the way you approve? Your journey starts here, with FusionX. Embrace the future. Embrace efficiency. Embrace success!",
+        "Secure AICTE approvals efficiently through our portal, addressing challenges with clarity, customization, and streamlined processes. Enhance compliance, accuracy, and real-time support for the growth of technical education in India. ",
       button: "Explore",
     },
     footerData: {

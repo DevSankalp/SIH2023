@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Contact({ animate }) {
+  // AppScript
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbzlAr048CjCFKsOeKugSjaWbNmOg9BbtHhQXDe1TBdT387p9C12cQqXkE2OfX0G2XdbHA/exec";
+  const [formData, setFormData] = useState({
+    email: "",
+    message: "",
+    firstName: "",
+    lastName: "",
+    time: `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+  });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(e.target),
+      });
+
+      if (response.ok) {
+        alert("Thanks for Contacting us..!");
+        setFormData({
+          email: "",
+          message: "",
+          firstName: "",
+          lastName: "",
+          time: `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+        });
+      } else {
+        console.error("Error!", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error!", error.message);
+    }
+  };
+
   return (
     <div
       className="relative flex items-center justify-center py-12 md:py-24 px-8 bg-white shadow-[inset_0_-1px_1px_rgba(0,0,0,0.4)] z-[0] overflow-x-hidden"
@@ -23,19 +59,36 @@ function Contact({ animate }) {
         <h1 className="text-center text-2xl md:text-5xl font-bold mb-4">
           Contact Us
         </h1>
-        <form>
+
+        {/* Form */}
+        <form
+          autoComplete="off"
+          name="google-sheet"
+          onSubmit={handleSubmit}
+          id="formCont"
+        >
+          <input type="hidden" name="time" value={formData.time} />
           {/* Name */}
           <div className="p-2 flex items-center gap-4">
             <input
               name="firstName"
               placeholder="First Name"
               type="text"
+              value={formData.firstName}
+              onChange={(e) =>
+                setFormData({ ...formData, firstName: e.target.value })
+              }
               className="w-full px-4 py-2 outline-none border-2 border-[#ccc] hover:border-blue-700 focus:border-blue-700 rounded-md duration-500"
+              required
             />
             <input
               name="lastName"
               placeholder="Last Name"
               type="text"
+              value={formData.lastName}
+              onChange={(e) =>
+                setFormData({ ...formData, lastName: e.target.value })
+              }
               className="w-full px-4 py-2 outline-none border-2 border-[#ccc] hover:border-blue-700 focus:border-blue-700 rounded-md duration-500"
             />
           </div>
@@ -46,7 +99,12 @@ function Contact({ animate }) {
               name="email"
               placeholder="Email"
               type="email"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               className="w-full px-4 py-2 outline-none border-2 border-[#ccc] hover:border-blue-700 focus:border-blue-700 rounded-md duration-500"
+              required
             />
           </div>
 
@@ -54,11 +112,20 @@ function Contact({ animate }) {
           <div className="p-2 flex flex-col items-center gap-8">
             <textarea
               name="message"
-              placeholder="Your Message"
+              placeholder="Your Query"
               type="text"
-              className="w-full h-32 px-4 py-2 outline-none border-2 border-[#ccc] hover:border-blue-700 focus:border-blue-700 rounded-md duration-500"
+              rows={5}
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              className="w-full px-4 py-2 outline-none border-2 border-[#ccc] hover:border-blue-700 focus:border-blue-700 rounded-md duration-500"
+              required
             />
-            <button className="w-max px-12 py-2 bg-[#fff] rounded-full shadow-[0_0_5px_rgba(0,0,0,0.4)] hover:bg-blue-700 hover:text-white duration-300 active:scale-[.98]">
+            <button
+              type="submit"
+              className="w-max px-12 py-2 bg-[#fff] rounded-full shadow-[0_0_5px_rgba(0,0,0,0.4)] hover:bg-blue-700 hover:text-white duration-300 active:scale-[.98]"
+            >
               Submit
             </button>
           </div>
