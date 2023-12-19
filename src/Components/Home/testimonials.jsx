@@ -69,7 +69,7 @@ function Testimonials({ animate }) {
               <div key={index}>
                 <div className="grid grid-cols-2 grid-rows-2 mb-8 bg-[rgba(255,255,255,.5)] p-8 rounded-xl gap-4">
                   <img
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="https://xsgames.co/randomusers/assets/avatars/male/63.jpg"
                     className="w-48 h-48 object-cover rounded-full row-span-2 justify-self-end"
                   />
                   <p className="text-xl text-center font-bold text-black self-end justify-self-center">
