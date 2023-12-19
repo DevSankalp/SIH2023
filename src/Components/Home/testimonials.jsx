@@ -6,23 +6,23 @@ import "slick-carousel/slick/slick-theme.css";
 function Testimonials({ animate }) {
   const testimonials = [
     {
-      quote: `FusionX was instrumental in helping us secure funding`,
+      quote: `AssistIQ was instrumental in helping us secure funding`,
       content:
-        "The team at FusionX provided us with the guidance and support we needed to secure funding for our startup. Their expertise and network of investors were invaluable.",
+        "The team at AssistIQ provided us with the guidance and support we needed to secure funding for our startup. Their expertise and network of investors were invaluable.",
       author: "Random Banda",
       description: "Random Content",
     },
     {
-      quote: `FusionX provided us with access to a range of resources and mentors`,
+      quote: `AssistIQ provided us with access to a range of resources and mentors`,
       content:
-        "FusionX was instrumental in helping us grow and scale our startup. Their platform provided us with access to a range of resources and mentors that helped us navigate the challenges of entrepreneurship.",
+        "AssistIQ was instrumental in helping us grow and scale our startup. Their platform provided us with access to a range of resources and mentors that helped us navigate the challenges of entrepreneurship.",
       author: "Random Banda",
       description: "Random Content",
     },
     {
-      quote: `FusionX helped us connect with other startups and industry experts`,
+      quote: `AssistIQ helped us connect with other startups and industry experts`,
       content:
-        "The networking opportunities provided by FusionX were invaluable. We were able to connect with other startups and industry experts, which helped us learn and grow.",
+        "The networking opportunities provided by AssistIQ were invaluable. We were able to connect with other startups and industry experts, which helped us learn and grow.",
       author: "Random Banda",
       description: "Random Content",
     },
@@ -59,7 +59,7 @@ function Testimonials({ animate }) {
       >
         <div className="flex flex-col items-center md:text-start md:gap-4 font-bold text-white">
           <h1 className="text-2xl md:text-4xl">Our Clients</h1>
-          <h1 className="text-3xl md:text-5xl">Why choose FusionX ?</h1>
+          <h1 className="text-3xl md:text-5xl">Why choose AssistIQ ?</h1>
         </div>
 
         {/* FeedBacks */}

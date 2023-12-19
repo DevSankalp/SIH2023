@@ -67,7 +67,7 @@ function Footer({ data }) {
       <div className="w-[90%] flex flex-col gap-6 sm:gap-0 sm:flex-row items-center sm:items-start justify-between border-y-[1px] border-[rgba(0,0,0,.5)] p-8 md:p-16 md:pb-24">
         {/* Logo */}
         <a href="/" className="text-3xl font-bold">
-          FusionX
+          AssistIQ
         </a>
 
         {/* Nav-Items */}
@@ -142,7 +142,7 @@ function Footer({ data }) {
 
       {/* Copyright */}
       <div className="flex flex-col sm:flex-row w-[80%] items-center sm:justify-between">
-        <p className="py-2 sm:py-8">© 2023 by FusionX</p>
+        <p className="py-2 sm:py-8">© 2023 by AssistIQ</p>
         <div className="flex items-center justify-end gap-2 sm:w-[40%] sm:py-8">
           {iconArr.map((content, index) => (
             <a key={index} href={content.link}>

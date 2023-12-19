@@ -99,7 +99,7 @@ const Nav = ({ navbarData }) => {
             src={logo_img}
             alt="logo-image"
           /> */}
-            FusionX
+            AssistIQ
           </a>
         </div>
 
