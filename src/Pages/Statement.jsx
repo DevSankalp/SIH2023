@@ -1,6 +1,7 @@
 import React from "react";
-import Table from "../Components/Statement/table";
 import Nav from "../Components/navbar";
+import Table from "../Components/Statement/table";
+import tableData from "../Components/Statement/table.json";
 
 function Statement() {
   const navbarData = {
@@ -19,7 +20,9 @@ function Statement() {
   return (
     <>
       <Nav navbarData={navbarData} />
-      <Table />
+      <div className="mt-24 w-full">
+        <Table tableData={tableData} />
+      </div>
     </>
   );
 }

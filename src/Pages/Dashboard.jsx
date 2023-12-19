@@ -1,5 +1,5 @@
 import React from "react";
-import Data from "../Components/DashBoard/dData";
+import Data from "../Components/DashBoard/data";
 import Sidebar from "../Components/DashBoard/sideBar";
 import Background from "../Components/DashBoard/background";
 

@@ -140,7 +140,11 @@ const Nav = ({ navbarData }) => {
                     <a
                       key={index}
                       href={items.link}
-                      className="w-max block pt-2 relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[1.5px] before:scale-x-0 lg:hover:before:scale-x-100 before:origin-left before:duration-300"
+                      className={`w-max block pt-2 relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[1.5px] before:origin-left before:duration-300 ${
+                        items.active
+                          ? ""
+                          : "before:scale-x-0 lg:hover:before:scale-x-100"
+                      }`}
                     >
                       {items.text}
                     </a>

@@ -10,14 +10,14 @@ function Hero({ data }) {
   ];
 
   return (
-    <div className="grid grid-cols-[60%_40%] items-center justify-center absolute top-0 md:-top-[20%] w-full h-screen">
+    <div className="grid grid-cols-[60%_40%] items-center justify-center absolute top-0 md:-top-[18%] w-full h-screen">
       {data.title.map((title, index) => (
         <Parallax
           key={index}
           speed={-30}
           className="flex flex-col px-4 md:pl-12 gap-6 "
         >
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold">
             {title}
           </h1>
           <p className="text-sm md:text-xl text-justify">{data.description}</p>

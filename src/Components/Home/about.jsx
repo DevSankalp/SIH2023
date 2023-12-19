@@ -74,27 +74,7 @@ function About({ animate }) {
 
   return (
     <>
-      <Parallax speed={20} className="sticky top-0 z-[0]">
-        {/* {Motto} */}
-        <div
-          className="h-[20vh] md:h-[25vh] bg-black text-white flex items-center overflow-hidden"
-          id="motto"
-        >
-          <div
-            className={`w-full h-full flex flex-col items-center justify-center duration-[1500ms] ${
-              animate.motto > 100
-                ? "translate-x-0 opacity-1"
-                : "-translate-x-1/4 opacity-0"
-            }`}
-          >
-            <h1 className="text-xl sm:text-4xl md:text-5xl w-max text-center relative">
-              <div className="absolute w-20 md:w-36 h-full -left-4 md:-left-12 -top-2 md:-top-8 border-white border-t-8 border-l-8"></div>
-              <div className="absolute w-20 md:w-36 h-full -right-4 md:-right-12 -bottom-2 md:-bottom-8 border-white border-b-8 border-r-8"></div>
-              We Help You Achieve Your Goals
-            </h1>
-          </div>
-        </div>
-
+      <Parallax speed={20} className="sticky top-24 z-[0]">
         {/* About_cont */}
         <div
           id="about"

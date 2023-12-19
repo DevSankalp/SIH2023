@@ -1,8 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
 function Footer({ data }) {
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbzlAr048CjCFKsOeKugSjaWbNmOg9BbtHhQXDe1TBdT387p9C12cQqXkE2OfX0G2XdbHA/exec";
+  const [formData, setFormData] = useState({
+    email: "",
+    message: "",
+    time: `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+  });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(e.target),
+      });
+
+      if (response.ok) {
+        alert("Thanks for Contacting us..!");
+        setFormData({
+          email: "",
+          message: "",
+          time: `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+        });
+      } else {
+        console.error("Error!", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error!", error.message);
+    }
+  };
+
   const iconArr = [
     {
       icon: (
@@ -59,21 +90,54 @@ function Footer({ data }) {
         {/* Mobile-View-Line */}
         <hr className="block sm:hidden h-[1px] w-full border-black" />
 
-        {/* More-Informations */}
-        {info.map((items, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-2 sm:gap-12 items-center sm:items-start"
-          >
-            <p>{items.text}</p>
-            <a
-              href={items.link}
-              className="w-max relative before:absolute before:bg-black before:bottom-0 before:left-0 before:w-full before:h-[7%] sm:before:scale-x-0 sm:before:hover:scale-x-100 before:origin-left before:duration-300"
-            >
-              {items.link}
-            </a>
+        {/* Feedback */}
+        <form
+          autoComplete="off"
+          name="google-sheet"
+          onSubmit={handleSubmit}
+          id="formCont"
+          className="w-full md:w-2/5"
+        >
+          <h1 className="ml-2 text-xl font-[500]">FeedBack</h1>
+          <input type="hidden" name="time" value={formData.time} />
+
+          {/* Email */}
+          <div className="p-2 flex items-center gap-8">
+            <input
+              name="email"
+              placeholder="Email"
+              type="email"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              className="w-full px-4 py-2 outline-none border-2 border-[#ccc] hover:border-blue-700 focus:border-blue-700 rounded-md duration-500"
+              required
+            />
           </div>
-        ))}
+
+          {/* TextArea */}
+          <div className="p-2 flex flex-col items-center gap-8">
+            <textarea
+              name="message"
+              placeholder="Your Query"
+              type="text"
+              rows={5}
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              className="w-full px-4 py-2 outline-none border-2 border-[#ccc] hover:border-blue-700 focus:border-blue-700 rounded-md duration-500"
+              required
+            />
+            <button
+              type="submit"
+              className="w-full py-2 bg-[#7B66ff] rounded-full shadow-[0_0_5px_rgba(0,0,0,0.4)] hover:bg-blue-700 text-white duration-300 active:scale-[.98]"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
 
       {/* Copyright */}

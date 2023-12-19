@@ -1,7 +1,6 @@
 import React from "react";
-import tableData from "./table.json";
 
-function RenderTable({ tableKey }) {
+function RenderTable({ tableData, tableKey }) {
   const renderCellValue = (value) => {
     if (typeof value === "object") {
       return Object.entries(value).map(([subKey, subValue]) => (
@@ -56,11 +55,11 @@ function RenderTable({ tableKey }) {
   );
 }
 
-function Table() {
+function Table({ tableData }) {
   return (
-    <div className="flex flex-col items-center justify-center my-8 gap-8 mt-24 w-full">
+    <div className="flex flex-col items-center justify-center gap-8 w-full">
       {Object.keys(tableData).map((tableKey) => (
-        <RenderTable key={tableKey} tableKey={tableKey} />
+        <RenderTable key={tableKey} tableKey={tableKey} tableData={tableData} />
       ))}
     </div>
   );
