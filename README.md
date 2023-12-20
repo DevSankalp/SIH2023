@@ -1,4 +1,17 @@
-# React App with Vite
+# Team FusionX
+## Members
+- Sankalp Srivastava
+- Anshu Kumar
+- Abhishek Sharma
+- Arham Hayat
+- Priyanka Lashkari
+- Mst Shahria Jerin Sinthia
+
+
+
+
+
+# AssistIQ
 
 This repository contains a React application scaffolded with Vite, a fast build tool that significantly improves the development experience.
 
