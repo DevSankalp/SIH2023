@@ -34,7 +34,7 @@ function App() {
           </Routes>
         </Router>
       </ParallaxProvider>
-      <Circle2 time={1000} />
+      <Circle2 time={100} />
     </React.Fragment>
   );
 }
