@@ -26,16 +26,12 @@ To get started with this project, follow these steps:
    cd react-app-vite
 
 ### Install Dependencies
+
 ```
 npm install
-### or
-```
-yarn install
 
 ### To run the project in development mode:
-npm run dev
-### or
-yarn dev
+``` npm run dev
 
 # License
 This project is licensed under the MIT License.
