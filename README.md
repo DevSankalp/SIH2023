@@ -15,7 +15,7 @@ To get started with this project, follow these steps:
 ### Prerequisites
 
 - Node.js (v14.x or later)
-- npm or Yarn
+- npm
 
 ### Installation
 
@@ -28,10 +28,12 @@ To get started with this project, follow these steps:
 ### Install Dependencies
 
 ```
-npm install
-
+    npm install
+```
 ### To run the project in development mode:
-``` npm run dev
+```
+    npm run dev
+```
 
 # License
 This project is licensed under the MIT License.
