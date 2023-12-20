@@ -26,13 +26,15 @@ To get started with this project, follow these steps:
    cd react-app-vite
 
 ### Install Dependencies
+```
 npm install
-# or
+### or
+```
 yarn install
 
 ### To run the project in development mode:
 npm run dev
-# or
+### or
 yarn dev
 
 # License
