@@ -12,19 +12,33 @@ function Hero({ data }) {
   ];
 
   return (
-    <div className="grid grid-cols-[60%_40%] items-center justify-center absolute top-0 md:-top-[18%] w-full h-screen">
+    <div className="grid md:grid-cols-[60%_40%] items-center justify-center absolute top-0 md:-top-[18%] w-full h-screen">
       {data.title.map((title, index) => (
         <Parallax
           key={index}
           speed={-30}
-          className="flex flex-col px-4 md:pl-12 gap-6 "
+          className="flex flex-col px-4 md:pl-12 gap-6"
         >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold">
+          <h1
+            className={`text-4xl sm:text-6xl md:text-7xl font-bold ${
+              window.innerWidth < 720
+                ? "glassmorph bg-[rgba(255,255,255,.5)] p-4"
+                : ""
+            }`}
+          >
             {title}
           </h1>
-          <p className="text-sm md:text-xl text-justify">{data.description}</p>
+          <p
+            className={`text-sm md:text-xl text-justify ${
+              window.innerWidth < 720
+                ? "glassmorph bg-[rgba(255,255,255,.5)] p-4"
+                : ""
+            }`}
+          >
+            {data.description}
+          </p>
           <div
-            className="cursor-default flex items-center justify-center text-xl text-transparent font-bold w-max border-2 border-black p-2 pr-12 mt-4 bg-[#7B66FF] hover:bg-clip-border hover:text-white bg-clip-text transition-all duration-300 relative before:absolute before:w-2 before:h-2 before:right-[14px] hover:before:right-[16px] hover:before:top-[16.5px] before:bg-transparent before:border-[#7B66FF] hover:before:border-white before:border-t-2 before:border-r-2 before:-rotate-45 hover:before:rotate-[45deg] before:transition-all before:duration-300 after:absolute after:w-5 after:h-5 after:right-[8.1px] after:bottom-[13px] after:rounded-full after:border-[#7B66FF] after:border-2 hover:after:border-white after:transition-all after:duration-300"
+            className="hidden cursor-default md:flex items-center justify-center text-xl text-transparent font-bold w-max border-2 border-black p-2 pr-12 mt-4 bg-[#7B66FF] hover:bg-clip-border hover:text-white bg-clip-text transition-all duration-300 relative before:absolute before:w-2 before:h-2 before:right-[14px] hover:before:right-[16px] hover:before:top-[16.5px] before:bg-transparent before:border-[#7B66FF] hover:before:border-white before:border-t-2 before:border-r-2 before:-rotate-45 hover:before:rotate-[45deg] before:transition-all before:duration-300 after:absolute after:w-5 after:h-5 after:right-[8.1px] after:bottom-[13px] after:rounded-full after:border-[#7B66FF] after:border-2 hover:after:border-white after:transition-all after:duration-300"
             onMouseEnter={() => setActive(true)}
             onMouseLeave={() => setActive(false)}
           >

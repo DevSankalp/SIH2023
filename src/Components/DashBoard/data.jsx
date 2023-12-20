@@ -56,7 +56,7 @@ function Data() {
 
   return (
     <div className="w-full h-full min-h-[300px] grid grid-rows-4 md:grid-rows-[40%_60%] pl-16 p-2 md:p-8 duration-500">
-      <div className="glassmorph rounded-xl shadow-[0_0_5px_rgba(0,0,0,.2)] bg-[rgba(255,255,255,.7)] mb-8">
+      <div className="mb-8">
         <Tracker />
       </div>
       <div className="w-full grid md:grid-cols-3 items-center justify-center gap-8">

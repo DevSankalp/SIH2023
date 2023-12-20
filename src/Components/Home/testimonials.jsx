@@ -48,21 +48,16 @@ function Testimonials({ animate }) {
   };
 
   return (
-    <div className="relative bg-white z-[0] flex flex-col items-center md:h-full">
+    <div className="relative bg-white flex flex-col items-center justify-center md:h-full p-4 md:p-8 w-screen overflow-hidden">
       <div
-        className={`absolute w-full h-2/3 bg-[#8E8FFA] top-0 left-0 duration-1000 ${
-          animate.testimonial > 150 ? "translate-x-0" : "-translate-x-full"
-        }`}
-      ></div>
-      <div
-        className={`w-full md:w-4/5 flex flex-col items-center rounded-xl duration-1000 gap-12 scale-[.9] ${
+        className={`w-full md:w-[95%] flex flex-col md:flex-row items-center justify-center bg-[#E5D4FF] rounded-xl duration-1000 gap-6 md:gap-12 p-2 md:p-8 scale-[.9] ${
           animate.testimonial > 150
             ? "translate-x-0 opacity-1"
             : "-translate-x-1/4 opacity-0"
         }`}
         id="testimonial"
       >
-        <div className="flex flex-col items-center md:text-start md:gap-4 font-bold text-white">
+        <div className="flex flex-col items-start md:text-start md:gap-4 font-bold ">
           <h1 className="text-2xl md:text-4xl">Our Clients</h1>
           <h1 className="text-3xl md:text-5xl">Why choose AssistIQ ?</h1>
         </div>
@@ -77,10 +72,10 @@ function Testimonials({ animate }) {
                     src={testimonial.image}
                     className="w-48 h-48 object-cover rounded-full row-span-2 justify-self-end"
                   />
-                  <p className="text-xl text-center font-bold text-black self-end justify-self-center">
+                  <p className="text-xl md:text-center font-bold text-black self-end justify-self-start md:justify-self-center">
                     {testimonial.author}
                   </p>
-                  <p className="text-lg font-thin text-black self-start justify-self-center">
+                  <p className="text-lg font-thin text-black self-start justify-self-start md:justify-self-center">
                     {testimonial.description}
                   </p>
                 </div>

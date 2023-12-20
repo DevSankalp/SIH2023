@@ -56,7 +56,7 @@ function InfoBot(animate) {
         }`}
         id="chatInfo"
       >
-        <h1 className="text-3xl md:text-6xl text-transparent text-center bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold">
+        <h1 className="text-3xl md:text-6xl text-transparent bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold">
           AI ChatBot
         </h1>
         <p className="text-justify">

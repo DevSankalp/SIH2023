@@ -44,13 +44,13 @@ function About({ animate }) {
             }`}
           >
             <div className="w-full flex flex-col items-center gap-4 md:gap-8">
-              <h1
-                className="text-transparent bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold"
-                style={{ fontSize: `${font}px` }}
-              >
-                About Us
-              </h1>
-              <div className="w-[90%] md:w-[70%] text-justify flex items-center">
+              <div className="w-[90%] md:w-[70%] text-justify flex flex-col items-center">
+                <h1
+                  className="text-transparent bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold text-left w-full"
+                  style={{ fontSize: `${font}px` }}
+                >
+                  About Us
+                </h1>
                 <p>
                   This platform revolutionizes the AICTE Approval Process
                   Handbook by providing a streamlined interface for educational

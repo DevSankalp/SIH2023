@@ -99,8 +99,8 @@ function Home() {
 
       {/* Scroll-Top-Button */}
       <button
-        className={`flex items-center justify-center fixed bottom-8 left-4 bg-blue-700 text-white shadow-[0_0_5px_rgba(0,0,0,.4)] hover:bg-white hover:text-black w-10 h-10 rounded-xl z-20 transition-transform duration-500 ${
-          window.scrollY > 700 ? "translate-x-0" : "-translate-x-[60px]"
+        className={`flex items-center justify-center fixed bottom-14 left-8 bg-blue-700 text-white shadow-[0_0_5px_rgba(0,0,0,.4)] hover:bg-white hover:text-black w-10 h-10 rounded-xl z-20 transition-transform duration-500 ${
+          window.scrollY > 700 ? "translate-x-0" : "-translate-x-[80px]"
         }`}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >

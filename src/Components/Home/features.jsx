@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function Features({ animate }) {
   const featureData = [
@@ -30,23 +30,24 @@ function Features({ animate }) {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-16 bg-black relative min-h-[60vh] py-8">
+    <div className="w-full flex flex-col items-center justify-center gap-16 bg-[#240046] relative min-h-[60vh] py-8 overflow-hidden">
       <h1 className="text-white text-6xl relative before:absolute before:w-full before:h-2 before:-bottom-2 gradient-border">
         Features
       </h1>
       <div
-        className={`flex flex-col w-[90%] items-center justify-center gap-8 duration-[1500ms] text-justify ${
+        className={`flex flex-col w-[90%] items-center justify-center gap-4 md:gap-8 duration-[1500ms] text-justify ${
           animate.about > 250
             ? "translate-x-0 opacity-1"
             : "translate-x-full opacity-0"
         }`}
       >
-        <div className="flex items-center justify-center gap-4 ">
+        {/* Part-1 */}
+        <div className="flex flex-col md:flex-rows items-center justify-center gap-4 ">
           {featureData.map((data, index) =>
             index % 2 === 0 ? (
               <div
                 key={index}
-                className="cursor-default rounded-none group border-2 border-white p-8 group relative flex items-center justify-center"
+                className="cursor-default rounded-none group border-2 border-white shadow-[0_0_10px_rgba(255,255,255,1)] hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] hover:scale-[1.1] duration-500 p-8 group relative flex items-center justify-center"
               >
                 <h1 className="gradient-background bg-clip-text text-transparent hover:text-white font-bold text-3xl text-center opacity-100 group-hover:opacity-20 duration-500 absolute p-4">
                   {data.head}
@@ -60,12 +61,13 @@ function Features({ animate }) {
             )
           )}
         </div>
-        <div className="flex items-center justify-center gap-4">
+        {/* Part-2 */}
+        <div className="flex flex-col md:flex-rows items-center justify-center gap-4">
           {featureData.map((data, index) =>
             index % 2 !== 0 ? (
               <div
                 key={index}
-                className="cursor-default rounded-none group border-2 border-white p-8 relative flex items-center justify-center"
+                className="cursor-default rounded-none group border-2 border-white shadow-[0_0_10px_rgba(255,255,255,1)] hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] hover:scale-[1.1] duration-500 p-8 relative flex items-center justify-center"
               >
                 <h1 className="gradient-background bg-clip-text text-transparent hover:text-white font-bold text-3xl text-center opacity-100 group-hover:opacity-20 duration-500 absolute p-4">
                   {data.head}
