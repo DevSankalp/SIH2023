@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Parallax } from "react-scroll-parallax";
+import { Canvas } from "@react-three/fiber";
+import Emblem from "./3DCanvas";
 
 function Hero({ data }) {
   const [active, setActive] = useState(false);
@@ -49,6 +51,14 @@ function Hero({ data }) {
           </div>
         </Parallax>
       ))}
+      <div className="w-full h-full fixed top-0 opacity-30 md:relative md:top-36 md:opacity-100 z-[-1] md:z-[0]">
+        <Canvas camera={{ position: [0, 0, 360], rotation: [0, 0, 0] }}>
+          <ambientLight intensity={1.7} />
+          <directionalLight position={[10, 10, 10]} intensity={3} />
+          <pointLight position={[10, 10, 10]} />
+          <Emblem />
+        </Canvas>
+      </div>
     </div>
   );
 }

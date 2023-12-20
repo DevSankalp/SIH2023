@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../Components/navbar";
 import Table from "../Components/Statement/table";
-import Background from "../Components/Home/homeBackground";
+import Background from "../Components/background";
 import Footer from "../Components/footer";
 import { FaPlus } from "react-icons/fa";
 

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../Components/navbar";
-import Background from "../Components/Home/homeBackground";
+import Background from "../Components/background";
 import Hero from "../Components/Home/hero";
 import About from "../Components/Home/about";
+import Features from "../Components/Home/features";
+import Testimonials from "../Components/Home/testimonials";
 import ChatBot from "../Components/chatBot";
 import Footer from "../Components/footer";
 import { IoIosArrowDropup } from "react-icons/io";
-import Features from "../Components/Home/features";
 
 function Home() {
   // visibility-controller
-  const elemArr = ["about", "chat", "chatInfo", "testimonial", "contact"];
+  const elemArr = ["about", "chat", "chatInfo", "testimonial"];
   const initialState = elemArr.reduce((key, elementId) => {
     key[elementId] = 0;
     return key;
@@ -57,11 +58,11 @@ function Home() {
       pages: [
         { text: "Home", link: "/", active: true },
         { text: "Fee Statement", link: "/Statement" },
+        { text: "FAQ", link: "/" },
       ],
       components: [
-        { text: "About", position: 720 },
-        { text: "ChatBot", position: 1200 },
-        { text: "Contact", position: 2500 },
+        { text: "About", position: 680 },
+        { text: "ChatBot", position: 1000 },
       ],
       loggedNav: [
         { text: "Dashboard", link: "/Dashboard" },
@@ -90,8 +91,9 @@ function Home() {
       <Nav navbarData={siteData.navbarData} />
       <Background />
       <Hero data={siteData.heroData} />
-      <Features />
       <About animate={inViewport} />
+      <Features animate={inViewport} />
+      <Testimonials animate={inViewport} />
       <ChatBot />
       <Footer data={siteData.footerData} />
 

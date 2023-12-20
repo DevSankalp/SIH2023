@@ -66,9 +66,35 @@ function Footer({ data }) {
     <footer className="flex flex-col items-center py-8 md:pt-12 md:pb-4 bg-white relative z-[1]">
       <div className="w-[90%] flex flex-col gap-6 sm:gap-0 sm:flex-row items-center sm:items-start justify-between border-y-[1px] border-[rgba(0,0,0,.5)] p-8 md:p-16 md:pb-24">
         {/* Logo */}
-        <a href="/" className="text-3xl font-bold">
-          AssistIQ
-        </a>
+        <div className="flex flex-col items-center justify-center w-max">
+          <a href="/" className="text-3xl font-bold">
+            AssistIQ
+          </a>
+          {/* Ministry of Education */}
+          <a
+            href="https://www.education.gov.in/"
+            target="_blank"
+            className="text-3xl font-bold"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Ministry_of_Education_India.svg"
+              alt="Ministry of Education"
+              className="w-32 h-32"
+            />
+          </a>
+          {/* AICTE */}
+          <a
+            href="https://www.aicte-india.org/"
+            target="_blank"
+            className="text-3xl font-bold"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/e/eb/All_India_Council_for_Technical_Education_logo.png"
+              alt="AICTE"
+              className="w-32 h-32"
+            />
+          </a>
+        </div>
 
         {/* Nav-Items */}
         <div className="flex flex-col gap-8 sm:gap-12">
