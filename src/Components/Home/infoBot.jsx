@@ -49,14 +49,14 @@ function InfoBot(animate) {
 
       {/* About-ChatBot */}
       <div
-        className={`flex flex-col justify-center gap-8 w-full md:w-2/3 justify-self-center p-8 md:p-0 duration-[1500ms] ${
+        className={`flex flex-col justify-center gap-4 w-full md:w-2/3 justify-self-center p-8 md:p-0 duration-[1500ms] ${
           animate.animate.chatInfo > 200
             ? "translate-x-0 opacity-1"
             : "translate-x-1/4 opacity-0"
         }`}
         id="chatInfo"
       >
-        <h1 className="text-3xl md:text-6xl text-transparent bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold">
+        <h1 className="text-[70px] text-transparent bg-[linear-gradient(to_right,#5FBDFF,#7B66FF)] bg-clip-text font-bold text-left w-full">
           AI ChatBot
         </h1>
         <p className="text-justify">

@@ -8,6 +8,7 @@ import Testimonials from "../Components/Home/testimonials";
 import ChatBot from "../Components/chatBot";
 import Footer from "../Components/footer";
 import { IoIosArrowDropup } from "react-icons/io";
+import FAQ from "../Components/Home/faq";
 
 function Home() {
   // visibility-controller
@@ -58,11 +59,11 @@ function Home() {
       pages: [
         { text: "Home", link: "/", active: true },
         { text: "Fee Statement", link: "/Statement" },
-        { text: "FAQ", link: "/" },
       ],
       components: [
         { text: "About", position: 680 },
         { text: "ChatBot", position: 1000 },
+        { text: "FAQ", link: "/", position: 2700 },
       ],
       loggedNav: [
         { text: "Dashboard", link: "/Dashboard" },
@@ -94,6 +95,7 @@ function Home() {
       <About animate={inViewport} />
       <Features animate={inViewport} />
       <Testimonials animate={inViewport} />
+      <FAQ />
       <ChatBot />
       <Footer data={siteData.footerData} />
 

@@ -109,7 +109,7 @@ const Nav = ({ navbarData }) => {
         </div>
 
         {/* Nav-Items */}
-        <div className="mr-32 hidden lg:block">{navList}</div>
+        <div className="mr-72 hidden lg:block">{navList}</div>
 
         {/* Nav-end */}
         <div className="flex items-center gap-4 p-2">

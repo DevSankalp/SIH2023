@@ -1,0 +1,52 @@
+[
+  {
+    "key": "query1",
+    "summary": "Where to send the queries related to portal and approval related issues for the approval process 2023-24?",
+    "content": "Institutes are requested to raise queries only through online Central Support System (CSS) available on AICTE website under Approval Process 2023-24 quick links. No queries through email will be entertained."
+  },
+  {
+    "key": "query2",
+    "summary": "If I have a problem with respect to the application while applying, whom to contact and where to contact?",
+    "content": "Institutes should contact through the online Central Support System (CSS) available on AICTE website under Approval Process 2023-24 quick links for application-related issues."
+  },
+  {
+    "key": "query3",
+    "summary": "Can a new institute apply for UG and PG in Engineering and Technology?",
+    "content": "No, the institute can opt for a UG program only. For PG Courses, the institute shall require NBA accreditation."
+  },
+  {
+    "key": "query4",
+    "summary": "How much land is required for the establishment of a New Engineering College with a UG program?",
+    "content": "There is no such minimum land requirement. The institute should have the required built-up area and land as per FSI/FAR as applicable (Rural/Urban/Mega/Metro Cities)."
+  },
+  {
+    "key": "query5",
+    "summary": "Is approval for new and existing Pharmacy and Architecture Institute/Program discontinued?",
+    "content": "Yes, as per Hon’ble Apex Court Order."
+  },
+  {
+    "key": "query6",
+    "summary": "Can a new institute apply for multiple programs?",
+    "content": "Yes, a new institute may apply for one or more Program(s)/Level(s)."
+  },
+  {
+    "key": "query7",
+    "summary": "Which courses can a new institute opt for?",
+    "content": "A new institute is required to opt for a minimum of THREE core branches and ONE Emerging area course."
+  },
+  {
+    "key": "query8",
+    "summary": "If a new institute applies for Multiple Programs for UG (E&T) and MBA, what will be the Security Deposit amount?",
+    "content": "The Security Deposit shall be the addition of all Program(s)/Level(s) applied for."
+  },
+  {
+    "key": "query9",
+    "summary": "How many Emerging Courses can a new institute opt for?",
+    "content": "A new institute is required to opt for THREE core branches and ONE Emerging area in Engineering and Technology. Other courses can be opted in the Emerging Area with a maximum ceiling of 360 in each Level(s)."
+  },
+  {
+    "key": "query10",
+    "summary": "As a new institute, on which website can I submit the application?",
+    "content": "The new institution is required to visit NSWS website to create login credentials & select AICTE approval under the approval tab for navigating to AICTE portal."
+  }
+]

@@ -30,8 +30,8 @@ function Features({ animate }) {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-16 bg-[#240046] relative min-h-[60vh] py-8 overflow-hidden">
-      <h1 className="text-white text-6xl relative before:absolute before:w-full before:h-2 before:-bottom-2 gradient-border">
+    <div className="w-full flex flex-col items-center justify-center gap-16 bg-white relative min-h-[60vh] py-8 overflow-hidden">
+      <h1 className=" text-6xl font-bold relative before:absolute before:w-full before:h-2 before:-bottom-2 gradient-border">
         Features
       </h1>
       <div
@@ -47,12 +47,12 @@ function Features({ animate }) {
             index % 2 === 0 ? (
               <div
                 key={index}
-                className="cursor-default rounded-none group border-2 border-white shadow-[0_0_10px_rgba(255,255,255,1)] hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] hover:scale-[1.1] duration-500 p-8 group relative flex items-center justify-center"
+                className="cursor-default rounded-none group border-2 border-black shadow-[0_0_10px_rgba(255,255,255,1)] hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] hover:scale-[1.1] duration-500 p-8 group relative flex items-center justify-center"
               >
-                <h1 className="gradient-background bg-clip-text text-transparent hover:text-white font-bold text-3xl text-center opacity-100 group-hover:opacity-20 duration-500 absolute p-4">
+                <h1 className="gradient-background bg-clip-text text-transparent font-bold text-3xl text-center opacity-100 group-hover:opacity-10 duration-500 absolute p-4">
                   {data.head}
                 </h1>
-                <p className="text-md text-white opacity-0 group-hover:opacity-100 duration-500">
+                <p className="text-md text-black opacity-0 group-hover:opacity-100 duration-500">
                   {data.description}
                 </p>
               </div>
@@ -67,12 +67,12 @@ function Features({ animate }) {
             index % 2 !== 0 ? (
               <div
                 key={index}
-                className="cursor-default rounded-none group border-2 border-white shadow-[0_0_10px_rgba(255,255,255,1)] hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] hover:scale-[1.1] duration-500 p-8 relative flex items-center justify-center"
+                className="cursor-default rounded-none group border-2 border-black shadow-[0_0_10px_rgba(255,255,255,1)] hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] hover:scale-[1.1] duration-500 p-8 relative flex items-center justify-center"
               >
-                <h1 className="gradient-background bg-clip-text text-transparent hover:text-white font-bold text-3xl text-center opacity-100 group-hover:opacity-20 duration-500 absolute p-4">
+                <h1 className="gradient-background bg-clip-text text-transparent font-bold text-3xl text-center opacity-100 group-hover:opacity-10 duration-500 absolute p-4">
                   {data.head}
                 </h1>
-                <p className="text-md text-white opacity-0 group-hover:opacity-100 duration-500">
+                <p className="text-md text-black opacity-0 group-hover:opacity-100 duration-500">
                   {data.description}
                 </p>
               </div>
