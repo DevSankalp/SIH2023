@@ -6,9 +6,8 @@ import Background from "../Components/DashBoard/background";
 function Dashboard() {
   const dashBoardData = {
     userData: {
-      userName: "DemoUser",
       userImg:
-        "https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg",
+        "https://feeds.abplive.com/onecms/images/uploaded-images/2023/01/19/a085de15eefb93d066b02667bd43a9cb1674146311370208_original.jpg?impolicy=abp_cdn&imwidth=650",
     },
     navData: {
       items: [
