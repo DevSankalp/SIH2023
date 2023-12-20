@@ -134,6 +134,18 @@ const Form = (uid,setActive) => {
           "35L+"
       ]
 
+      const landArea = [
+        "5 Acre - 10 Acre",
+        "10 Acre - 15 Acre",
+        "15 Acre - 25 Acre",
+        "25Acre+"
+      ]
+
+      const yesNo = [
+        "Yes",
+        "No"
+      ]
+
       
 
         const domains = [
@@ -411,7 +423,6 @@ const Form = (uid,setActive) => {
         "What is the maximum amount you can allocate as a security deposit?",
         "Can you confirm the legal status of the land you've acquired?",
         "What is the total land area you own?",
-        "How many employees are currently employed in your Institution?"
       ];
   
     return (
@@ -487,21 +498,34 @@ const Form = (uid,setActive) => {
         </ul>
       )}
     </div>
-    {questions.map((question, index) => (
-  <div key={`question${index + 1}`} className="bg-[#eee] focus-within:border-black border-2 my-2 px-4 py-3 text-sm rounded-lg w-full transition-all duration-500">
-    <label htmlFor={`Q${index + 6}`}>{`Q${index+6}: ${question}`}</label>
-    <textarea
-      id={`Q${index + 6}`}
-      name={`G${index + 5}`}
-      value={answers[`G${index + 5}`]}
-      onChange={handleInputChange}
-      placeholder={`Enter your answer for ${question}`}
-      maxLength={60}
-      className="w-full h-20 resize-none"
-    />
-  </div>
-    ))
-    }
+    <h2>Q6: What is your current budget or financial position??</h2>
+      <Dropdown
+        question="G5"
+        options={currentBudget}
+        handleSelect={handleSelect}
+        selected={answers.G5}
+      />
+      <h2>Q7: What is the maximum amount you can allocate as a security deposit?</h2>
+      <Dropdown
+        question="G6"
+        options={securityDeposit}
+        handleSelect={handleSelect}
+        selected={answers.G6}
+      />
+      <h2>Q8: Can you confirm the legal status of the land you've acquired?</h2>
+      <Dropdown
+        question="G8"
+        options={yesNo}
+        handleSelect={handleSelect}
+        selected={answers.G8}
+      />
+      <h2>Q9: What is the total land area you own?</h2>
+      <Dropdown
+        question="G9"
+        options={landArea}
+        handleSelect={handleSelect}
+        selected={answers.G9}
+      />
           <button disabled={selectedOption === ''} onClick={handleNext} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
               Next
             </button>

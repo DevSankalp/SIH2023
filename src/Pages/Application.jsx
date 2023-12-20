@@ -8,6 +8,7 @@ import Form from "../Components/Form";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Tracker from "../Components/DashBoard/tracker";
 
 
 function Application() {
@@ -82,9 +83,13 @@ function Application() {
         fetchData(); // Fetch data when the component mounts or when relationId changes
       }
     }, [relationId]);
+    const [formIds,setformIds]=useState([])
 
     useEffect(() => {
       if (form && form.data && form.data.attributes && form.data.attributes.forms && form.data.attributes.forms.data) {
+        const formIdsArray = form.data.attributes.forms.data.map(formItem => formItem.id);
+        setformIds(formIdsArray)
+    console.log('Form IDs Array:', formIdsArray);
         const newRows = form.data.attributes.forms.data.map((formItem, index) => ({
           values: [
             (index + 1).toString(),
@@ -125,6 +130,14 @@ function Application() {
       ],
     },
   };
+
+  const [visibleFormId, setVisibleFormId] = useState(null);
+
+  const openForm = (id) => {
+    setVisibleFormId(id);
+  };
+
+
   if (!user) {
     return(
       <div>
@@ -133,6 +146,19 @@ function Application() {
       </div>
     )
   }
+
+  const renderButtons = () => {
+    if (formIds && formIds.length > 0) {
+      return formIds.map((id, index) => (
+        <button key={id} onClick={() => openForm(id)}>
+          Open Form {index}
+        </button>
+      ));
+    } else {
+      return <p>No forms available</p>;
+    }
+  };
+
 
   return (
     <>
@@ -178,6 +204,10 @@ function Application() {
                   </button>
                 </div>
                 <Table tableData={tableData} />
+                <div className="flex flex-col items-center justify-center gap-8 w-full">
+      {renderButtons()}
+      {visibleFormId && <Tracker formId={visibleFormId} />} {/* Display Tracker component when visibleFormId is set */}
+    </div>
               </div>
             )}
           </div>
