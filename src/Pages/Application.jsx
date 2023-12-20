@@ -1,19 +1,108 @@
-import React, { useState } from "react";
 import Nav from "../Components/navbar";
 import Table from "../Components/Statement/table";
 import Background from "../Components/background";
 import Footer from "../Components/footer";
 import { FaPlus } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import Form from "../Components/Form";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 function Application() {
   const [active, setActive] = useState(false);
+  const [user, setUser] = useState(null);
+  const [uid, setUid] = useState(null);
+  const [form, setForm] = useState(null);
+  const navigate = useNavigate();
+  const [relationId, setRelationId] = useState(0);
+  
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          // User is signed in.
+          setUser(user);
+          setUid(user.uid);
+        } else {
+          // No user is signed in.
+          setUser(null);
+          setTimeout(() => {
+            navigate("/Login");
+          }, 3000);
+        }
+      });
+  
+      return () => {
+        unsubscribe();
+      };
+    }, []);
 
-  const tableData = {
-    application: {
-      headers: ["S.No.", "Application", ""],
-      rows: [],
-    },
-  };
+    const [tableData, setTableData] = useState({
+      application: {
+        headers: ["S.No.", "Application", ""],
+        rows: [],
+      },
+    });
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          if (uid) {
+            const response = await axios.get(`http://localhost:1337/api/userdata?filters[uid][$eq]=${uid}`);
+            const userData = response.data;
+            if (userData && userData.data && userData.data.length > 0) {
+              setRelationId(userData.data[0].id);
+              // Do something with the retrieved user data
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          // Handle error appropriately
+        }
+      };
+  
+      fetchData(); // Fetch data when uid changes
+    }, [uid]);
+
+
+    useEffect(() => {
+      if (relationId != 0) {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(`http://localhost:1337/api/userdata/${relationId}?populate=forms`);
+            const data = response.data;
+            setForm(data);
+          } catch (error) {
+            console.log('Error fetching data:', error);
+            // Handle error appropriately
+          }
+        };
+    
+        fetchData(); // Fetch data when the component mounts or when relationId changes
+      }
+    }, [relationId]);
+
+    useEffect(() => {
+      if (form && form.data && form.data.attributes && form.data.attributes.forms && form.data.attributes.forms.data) {
+        const newRows = form.data.attributes.forms.data.map((formItem, index) => ({
+          values: [
+            (index + 1).toString(),
+            formItem.attributes.type || '',
+            '',
+          ],
+        }));
+    
+        setTableData(prevState => ({
+          application: {
+            ...prevState.application,
+            rows: prevState.application.rows.concat(newRows),
+          },
+        }));
+      }
+    }, [form]);    
+
+  
   const siteData = {
     navbarData: {
       pages: [
@@ -36,6 +125,14 @@ function Application() {
       ],
     },
   };
+  if (!user) {
+    return(
+      <div>
+        <h2>Error Page</h2>
+        <h3>Redirecting in 3 Seconds</h3>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -44,7 +141,9 @@ function Application() {
         {tableData.application.rows.length < 1 ? (
           active ? (
             <div className="h-screen w-screen flex items-center justify-center fixed top-12">
-              <div className="h-[80vh] w-[90vw] bg-white"></div>
+              <div className="h-[80vh] w-[90vw] p-4 overflow-auto bg-white">
+                <Form uid={uid}/>
+              </div>
             </div>
           ) : (
             <div className="fixed top-0 flex items-center justify-center h-screen w-screen">
@@ -63,7 +162,9 @@ function Application() {
           <div className="fixed top-24 flex flex-col items-center justify-center w-full">
             {active ? (
               <div className="h-screen w-screen flex items-center justify-center fixed top-12">
-                <div className="h-[80vh] w-[90vw] bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] rounded-xl"></div>
+                <div className="h-[80vh] w-[90vw] p-4 overflow-auto bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] rounded-xl">
+                  <Form uid={uid} setActive={setActive}/>
+                </div>
               </div>
             ) : (
               <div className="w-full">
