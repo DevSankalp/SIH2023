@@ -36,4 +36,4 @@ To get started with this project, follow these steps:
 ```
 
 # License
-This project is licensed under the MIT License.
+- This project is licensed under the MIT License.

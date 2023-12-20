@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"
 
 const chatBot = () => {
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://cdn.botpress.cloud/webchat/v1/inject.js";
-    script.async = true;
-    document.body.appendChild(script);
+    const script = document.createElement("script")
+    script.src = "https://cdn.botpress.cloud/webchat/v1/inject.js"
+    script.async = true
+    document.body.appendChild(script)
 
     script.onload = () => {
       window.botpressWebChat.init({
@@ -26,11 +26,11 @@ const chatBot = () => {
         useSessionStorage: true,
         theme: "prism",
         themeColor: "#2563eb",
-      });
-    };
-  }, []);
+      })
+    }
+  }, [])
 
-  return <div id="webchat"></div>;
-};
+  return <div id="webchat"></div>
+}
 
-export default chatBot;
+export default chatBot
