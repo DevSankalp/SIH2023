@@ -29,7 +29,7 @@ const AuthForm = ({ formType, background }) => {
       setPassword("");
       // Show success notification
       alert("Registration successful!");
-      handleLogin(event, email, password);
+      handleLoginFirst(event, email, password);
     } catch (error) {
       // Show error notification
       alert("Registration failed. Please try again.");
@@ -74,7 +74,7 @@ const AuthForm = ({ formType, background }) => {
       const currentUser = auth.currentUser;
       if (currentUser) {
         const userData = {
-          UID: currentUser.uid,
+          uid: currentUser.uid,
           email: currentUser.email,
           name: currentUser.displayName || "Default Name", // Use display name or a default name if not available
         };

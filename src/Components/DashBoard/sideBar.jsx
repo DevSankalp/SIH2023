@@ -15,7 +15,7 @@ const iconArr = [
 
 const Sidebar = ({ userData, navData }) => {
   const [openNav, setOpenNav] = useState(false);
-  const { userImg } = userData;
+  const { userName, userImg } = userData;
   const { items } = navData;
 
   const [user, setUser] = useState(null);
