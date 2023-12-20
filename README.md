@@ -35,7 +35,7 @@ To get started with this project, follow these steps:
 1. Clone this repository:
 
    ```bash
-   git clone <repository_url.git>
+   git clone https://github.com/DevSankalp/SIH2023
    cd react-app-vite
 
 ### Install Dependencies
