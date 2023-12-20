@@ -35,7 +35,7 @@ const Carousel = () => {
       <Slider ref={setSliderRef} {...settings}>
         {Object.keys(ChapterData).map((chapterKey, index) => (
           <div key={index}>
-            <div className="flex flex-col items-center justify-center gap-4 px-4 group relative">
+            <div className="flex flex-col items-center justify-center group relative h-[20vh]">
               <h2 className="text-2xl md:text-4xl absolute group-hover:opacity-10 duration-500 flex items-center gap-2">
                 {ChapterData[chapterKey].title}
                 <FaLink className="w-4 h-4 text-gray-400" />

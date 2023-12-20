@@ -37,11 +37,11 @@ const Sidebar = ({ userData, navData }) => {
 
   return (
     <div
-      className={`h-screen py-2 md:pl-8 md:py-8 w-[75vw] md:w-auto fixed md:static z-10 transition-all duration-500 ${
+      className={`h-screen w-[75vw] md:w-auto fixed md:static z-10 transition-all duration-500 ${
         openNav ? "left-0" : "-left-[63%]"
       }`}
     >
-      <div className="relative h-full w-full transition-all duration-500 flex flex-col justify-around items-center py-8 glassmorph rounded-r-xl md:rounded-xl bg-[rgba(255,255,255,.7)]">
+      <div className="relative h-full w-full transition-all duration-500 flex flex-col justify-around items-center py-8 glassmorph bg-[rgba(255,255,255,.7)]">
         {/* Mobile-Toggle-btn */}
         <button
           className="h-6 w-6 md:hidden flex items-center absolute top-4 right-4"
