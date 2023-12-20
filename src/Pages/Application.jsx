@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Tracker from "../Components/DashBoard/tracker";
 
-
 function Application() {
   const [active, setActive] = useState(false);
   const [user, setUser] = useState(null);
@@ -18,96 +17,101 @@ function Application() {
   const [form, setForm] = useState(null);
   const navigate = useNavigate();
   const [relationId, setRelationId] = useState(0);
-  
-    useEffect(() => {
-      const unsubscribe = auth.onAuthStateChanged((user) => {
-        if (user) {
-          // User is signed in.
-          setUser(user);
-          setUid(user.uid);
-        } else {
-          // No user is signed in.
-          setUser(null);
-          setTimeout(() => {
-            navigate("/Login");
-          }, 3000);
-        }
-      });
-  
-      return () => {
-        unsubscribe();
-      };
-    }, []);
 
-    const [tableData, setTableData] = useState({
-      application: {
-        headers: ["S.No.", "Application", ""],
-        rows: [],
-      },
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setUser(user);
+        setUid(user.uid);
+      } else {
+        // No user is signed in.
+        setUser(null);
+        setTimeout(() => {
+          navigate("/Login");
+        }, 3000);
+      }
     });
 
-    useEffect(() => {
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const [tableData, setTableData] = useState({
+    application: {
+      headers: ["S.No.", "Application", ""],
+      rows: [],
+    },
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (uid) {
+          const response = await axios.get(
+            `http://localhost:1337/api/userdata?filters[uid][$eq]=${uid}`
+          );
+          const userData = response.data;
+          if (userData && userData.data && userData.data.length > 0) {
+            setRelationId(userData.data[0].id);
+            // Do something with the retrieved user data
+          }
+        }
+      } catch (error) {
+        // Handle error appropriately
+      }
+    };
+
+    fetchData(); // Fetch data when uid changes
+  }, [uid]);
+
+  useEffect(() => {
+    if (relationId != 0) {
       const fetchData = async () => {
         try {
-          if (uid) {
-            const response = await axios.get(`http://localhost:1337/api/userdata?filters[uid][$eq]=${uid}`);
-            const userData = response.data;
-            if (userData && userData.data && userData.data.length > 0) {
-              setRelationId(userData.data[0].id);
-              // Do something with the retrieved user data
-            }
-          }
+          const response = await axios.get(
+            `http://localhost:1337/api/userdata/${relationId}?populate=forms`
+          );
+          const data = response.data;
+          setForm(data);
         } catch (error) {
-          console.error('Error fetching user data:', error);
           // Handle error appropriately
         }
       };
-  
-      fetchData(); // Fetch data when uid changes
-    }, [uid]);
 
+      fetchData(); // Fetch data when the component mounts or when relationId changes
+    }
+  }, [relationId]);
+  const [formIds, setformIds] = useState([]);
 
-    useEffect(() => {
-      if (relationId != 0) {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get(`http://localhost:1337/api/userdata/${relationId}?populate=forms`);
-            const data = response.data;
-            setForm(data);
-          } catch (error) {
-            console.log('Error fetching data:', error);
-            // Handle error appropriately
-          }
-        };
-    
-        fetchData(); // Fetch data when the component mounts or when relationId changes
-      }
-    }, [relationId]);
-    const [formIds,setformIds]=useState([])
+  useEffect(() => {
+    if (
+      form &&
+      form.data &&
+      form.data.attributes &&
+      form.data.attributes.forms &&
+      form.data.attributes.forms.data
+    ) {
+      const formIdsArray = form.data.attributes.forms.data.map(
+        (formItem) => formItem.id
+      );
+      setformIds(formIdsArray);
+      const newRows = form.data.attributes.forms.data.map(
+        (formItem, index) => ({
+          values: [(index + 1).toString(), formItem.attributes.type || "", ""],
+        })
+      );
 
-    useEffect(() => {
-      if (form && form.data && form.data.attributes && form.data.attributes.forms && form.data.attributes.forms.data) {
-        const formIdsArray = form.data.attributes.forms.data.map(formItem => formItem.id);
-        setformIds(formIdsArray)
-    console.log('Form IDs Array:', formIdsArray);
-        const newRows = form.data.attributes.forms.data.map((formItem, index) => ({
-          values: [
-            (index + 1).toString(),
-            formItem.attributes.type || '',
-            '',
-          ],
-        }));
-    
-        setTableData(prevState => ({
-          application: {
-            ...prevState.application,
-            rows: prevState.application.rows.concat(newRows),
-          },
-        }));
-      }
-    }, [form]);    
+      setTableData((prevState) => ({
+        application: {
+          ...prevState.application,
+          rows: prevState.application.rows.concat(newRows),
+        },
+      }));
+    }
+  }, [form]);
 
-  
   const siteData = {
     navbarData: {
       pages: [
@@ -137,14 +141,13 @@ function Application() {
     setVisibleFormId(id);
   };
 
-
   if (!user) {
-    return(
+    return (
       <div>
         <h2>Error Page</h2>
         <h3>Redirecting in 3 Seconds</h3>
       </div>
-    )
+    );
   }
 
   const renderButtons = () => {
@@ -159,7 +162,6 @@ function Application() {
     }
   };
 
-
   return (
     <>
       <div className="Application">
@@ -168,7 +170,7 @@ function Application() {
           active ? (
             <div className="h-screen w-screen flex items-center justify-center fixed top-12">
               <div className="h-[80vh] w-[90vw] p-4 overflow-auto bg-white">
-                <Form uid={uid}/>
+                <Form uid={uid} />
               </div>
             </div>
           ) : (
@@ -189,7 +191,7 @@ function Application() {
             {active ? (
               <div className="h-screen w-screen flex items-center justify-center fixed top-12">
                 <div className="h-[80vh] w-[90vw] p-4 overflow-auto bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] rounded-xl">
-                  <Form uid={uid} setActive={setActive}/>
+                  <Form uid={uid} setActive={setActive} />
                 </div>
               </div>
             ) : (
@@ -205,9 +207,10 @@ function Application() {
                 </div>
                 <Table tableData={tableData} />
                 <div className="flex flex-col items-center justify-center gap-8 w-full">
-      {renderButtons()}
-      {visibleFormId && <Tracker formId={visibleFormId} />} {/* Display Tracker component when visibleFormId is set */}
-    </div>
+                  {renderButtons()}
+                  {visibleFormId && <Tracker formId={visibleFormId} />}{" "}
+                  {/* Display Tracker component when visibleFormId is set */}
+                </div>
               </div>
             )}
           </div>

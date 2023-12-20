@@ -8,11 +8,10 @@ const Tracker = ({ formId }) => {
   const [docTrackValue, setDocTrackValue] = useState(25);
   const [qualityTrackValue, setQualityTrackValue] = useState(10);
   const [formData, setFormData] = useState(null);
-  console.log(formId);
 
   const processData = (formData) => {
     let counter = 100;
-  
+
     // Checking A1-A9
     for (let i = 1; i <= 9; i++) {
       const answer = formData[`A${i}`];
@@ -20,7 +19,7 @@ const Tracker = ({ formId }) => {
         counter -= 5;
       }
     }
-  
+
     // Checking G6-G9
     const { G6, G7, G8 } = formData;
     if (G6 !== "100L+") {
@@ -32,22 +31,21 @@ const Tracker = ({ formId }) => {
     if (G8 === "No") {
       counter -= 20;
     }
-  
+
     return counter;
   };
-
-
 
   useEffect(() => {
     // Fetch data using axios when formId changes
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:1337/api/forms/${formId}`);
+        const response = await axios.get(
+          `http://localhost:1337/api/forms/${formId}`
+        );
         setFormData(response.data); // Set the retrieved data in state
         const counter = processData(formData);
-        setQualityTrackValue(counter)
+        setQualityTrackValue(counter);
       } catch (error) {
-        console.error("Error fetching form data:", error);
         // Handle errors
       }
     };
@@ -56,9 +54,6 @@ const Tracker = ({ formId }) => {
       fetchData(); // Call fetchData when formId is available
     }
   }, [formId]);
-
-  console.log(formData);
-  
 
   return (
     <section className="z-[0] min-h-[200px] h-full w-full grid grid-cols-[25%_75%] items-center justify-center">

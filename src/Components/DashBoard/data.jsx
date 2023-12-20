@@ -63,7 +63,7 @@ function Data() {
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
     setNext(option.value);
-    setIsOpen(false); // Close dropdown when an option is clicked
+    setIsOpen(false);
   };
 
   const [selectedOption, setSelectedOption] = useState("");

@@ -33,7 +33,6 @@ const AuthForm = ({ formType, background }) => {
     } catch (error) {
       // Show error notification
       alert("Registration failed. Please try again.");
-      console.error(error);
     }
   };
 
@@ -60,7 +59,6 @@ const AuthForm = ({ formType, background }) => {
       setPassword("");
     } catch (error) {
       alert("Login failed. Please check your credentials.");
-      console.error(error);
     }
   };
   const handleLoginFirst = async (event, email, password) => {
@@ -83,11 +81,9 @@ const AuthForm = ({ formType, background }) => {
         axios
           .post("http://localhost:1337/api/userdata", { data: userData })
           .then((response) => {
-            console.log("Entry created:", response.data);
             navigate("/Dashboard");
           })
           .catch((error) => {
-            console.error("Error creating entry:", error);
             // Show error notification for entry creation
             alert("Error creating user data entry. Please try again.");
           });
@@ -99,7 +95,6 @@ const AuthForm = ({ formType, background }) => {
       setPassword("");
     } catch (error) {
       alert("Login failed. Please check your credentials.");
-      console.error(error);
     }
   };
 
@@ -122,7 +117,6 @@ const AuthForm = ({ formType, background }) => {
       setShowResetModal(false);
     } catch (error) {
       // Handle specific error when email doesn't exist
-      console.log(error);
     }
   };
 
