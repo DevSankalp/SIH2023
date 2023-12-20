@@ -56,6 +56,7 @@ function Data() {
 
   return (
     <div className="w-full h-full min-h-[300px] grid grid-rows-4 md:grid-rows-[40%_60%] pl-16 p-2 md:p-8 duration-500">
+      {/* Tracker */}
       <div className="mb-8">
         <Tracker />
       </div>

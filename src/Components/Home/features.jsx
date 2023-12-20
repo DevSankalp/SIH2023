@@ -42,7 +42,7 @@ function Features({ animate }) {
         }`}
       >
         {/* Part-1 */}
-        <div className="flex flex-col md:flex-rows items-center justify-center gap-4 ">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 ">
           {featureData.map((data, index) =>
             index % 2 === 0 ? (
               <div
@@ -62,7 +62,7 @@ function Features({ animate }) {
           )}
         </div>
         {/* Part-2 */}
-        <div className="flex flex-col md:flex-rows items-center justify-center gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           {featureData.map((data, index) =>
             index % 2 !== 0 ? (
               <div

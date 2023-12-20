@@ -1,11 +1,25 @@
 import * as React from "react";
-import Stack from "@mui/material/Stack";
-import CircularProgress from "@mui/material/CircularProgress";
+import PropTypes from "prop-types";
+import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
-export default function DocTracker({ value }) {
+function LinearProgressWithLabel(props) {
   return (
-    <Stack spacing={2} direction="row">
-      <CircularProgress variant="determinate" value={value} size={180} />
-    </Stack>
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ width: "100%", mr: 1, ml: 1 }}>
+        <LinearProgress variant="determinate" {...props} />
+      </Box>
+    </Box>
   );
 }
+
+function DocTracker({ value }) {
+  return (
+    <Box sx={{ width: "93%" }}>
+      <LinearProgressWithLabel value={value} />
+    </Box>
+  );
+}
+
+export default DocTracker;
