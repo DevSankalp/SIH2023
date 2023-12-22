@@ -5,6 +5,11 @@ import ChapterData from "./chapters.json";
 import { FaLink } from "react-icons/fa6";
 import { MdMenuBook } from "react-icons/md";
 import { CiSaveDown1 } from "react-icons/ci";
+import PDF1 from "../Assets/Chapter1.pdf";
+import PDF2 from "../Assets/Chapter2.pdf";
+import PDF3 from "../Assets/Chapter3.pdf";
+import PDF4 from "../Assets/Chapter4.pdf";
+import PDF5 from "../Assets/Chapter5.pdf";
 
 const Carousel = () => {
   const [sliderRef, setSliderRef] = useState(null);
@@ -53,6 +58,7 @@ const Carousel = () => {
 
 function Data() {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedLink, setselectedLink] = useState("");
 
   const [next, setNext] = useState("");
 
@@ -64,6 +70,8 @@ function Data() {
     setSelectedOption(option.label);
     setNext(option.value);
     setIsOpen(false);
+    setselectedLink(links[0][option.value]);
+    // Opens the link in a new tab
   };
 
   const [selectedOption, setSelectedOption] = useState("");
@@ -85,20 +93,23 @@ function Data() {
 
   const links = [
     {
-      "Forgotten Password":
-        "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-1.pdf",
-      "Application Format":
-        "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-2.pdf",
-      "Completion Closure":
-        "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-4.pdf",
-      "Release of Security Deposit":
-        "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-3.pdf",
-      "Additional course(s)/intake":
-        "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-8.pdf",
+      E: "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-1.pdf",
+      D: "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-2.pdf",
+      C: "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-4.pdf",
+      B: "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-3.pdf",
+      A: "https://www.aicte-india.org/sites/default/files/approval/2023-24/Affidavit-8.pdf",
     },
   ];
 
   const [active, setActive] = useState(false);
+
+  const pdfFiles = [
+    { name: "Chapter1", path: PDF1 },
+    { name: "Chapter2", path: PDF2 },
+    { name: "Chapter3", path: PDF3 },
+    { name: "Chapter4", path: PDF4 },
+    { name: "Chapter5", path: PDF5 },
+  ];
 
   return (
     <div className="w-full h-full min-h-[300px] grid grid-rows-4 md:grid-rows-[40%_60%] pl-16 p-2 md:p-8 duration-500">
@@ -123,8 +134,19 @@ function Data() {
           {/* Chapters */}
           <Carousel />
         </div>
-        <div className="glassmorph rounded-xl shadow-[0_0_5px_rgba(0,0,0,.2)] bg-[rgba(255,255,255,.7)] w-full h-full"></div>
-        <div className="glassmorph rounded-xl shadow-[0_0_5px_rgba(0,0,0,.2)] bg-[rgba(255,255,255,.7)] w-full h-full">
+        <div className="glassmorph rounded-xl shadow-[0_0_5px_rgba(0,0,0,.2)] bg-[rgba(255,255,255,.7)] w-full h-full flex flex-col items-center justify-center gap-12">
+          <h1 className="text-3xl font-bold">PDF Files</h1>
+          <ul className="flex flex-col items-center justify-center gap-4 text-xl">
+            {pdfFiles.map((file, index) => (
+              <li key={index}>
+                <a href={file.path} target="_blank" rel="noopener noreferrer">
+                  {file.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="glassmorph flex flex-col p-4 gap-4 justify-center rounded-xl shadow-[0_0_5px_rgba(0,0,0,.2)] bg-[rgba(255,255,255,.7)] w-full h-full">
           <button
             id="dropdownDividerButton"
             onClick={toggleDropdown}
@@ -163,11 +185,13 @@ function Data() {
               ))}
             </ul>
           )}
-          {links.map((items, index) => (
-            <a key={index} href={items[1]}>
-              {items[0]}
-            </a>
-          ))}
+
+          <a
+            className="w-full bg-black text-white hover:text-black hover:bg-white py-2 px-4 rounded-xl duration-300 shadow-[0_0_5px_rgba(0,0,0,0.2)] active:scale-[.95]"
+            href={selectedLink}
+          >
+            Link to This Doc
+          </a>
         </div>
       </div>
     </div>
