@@ -21,7 +21,7 @@ const chatBot = () => {
         themeName: "prism",
         botName: "Chanakya",
         avatarUrl:
-          "https://cracku.in/latest-govt-jobs/wp-content/uploads/2021/02/AICTE-Logo.jpg",
+          "https://vectorseek.com/wp-content/uploads/2023/09/AICTE-Logo-Vector.svg-.png",
         frontendVersion: "v1",
         useSessionStorage: true,
         theme: "prism",
